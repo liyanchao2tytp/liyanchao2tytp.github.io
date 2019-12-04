@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/12 | 博客</title>
+  <title>AJAX异步局部刷新 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;12&#x2F;index.html">
+  <meta name="description" content="AJAX局部刷新 提高用户体验必备技术首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。">
+<meta name="keywords" content="科普,学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX异步局部刷新">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;index.html">
 <meta property="og:site_name" content="博客">
+<meta property="og:description" content="AJAX局部刷新 提高用户体验必备技术首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;...&#x2F;Image&#x2F;AJAX_explain.jpg">
+<meta property="og:updated_time" content="2019-12-04T07:20:03.226Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;...&#x2F;Image&#x2F;AJAX_explain.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -159,36 +165,146 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-AJAX异步局部刷新" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      AJAX异步局部刷新
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" class="archive-article-date">
+
+        
+        <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" class="archive-article-date">
   	<time datetime="2019-12-03T10:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/">AJAX异步局部刷新</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AJAX局部刷新-提高用户体验必备技术"><a href="#AJAX局部刷新-提高用户体验必备技术" class="headerlink" title="AJAX局部刷新 提高用户体验必备技术"></a>AJAX局部刷新 提高用户体验必备技术</h1><p style="text-indent:2em">首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。</p>
+<a id="more"></a>
+<p style="text-indent:2em">比如有些软件的注册页面，我们填写了一大堆用户信息，好不容易到了验证码环节，或者提交环节，却因为我们一项信息写错了而导致我们之前写的所有信息都没了。又要重现再来一遍。用户体验极差，有时候甚至直接放弃了这款软件。还有一些视频网页，我们在播放视频的时候登录账户，然后一个自动刷新，重新看一遍广告，重新缓存视频。这些刷新都是游览器的UI线程进行的刷新，是一个全局刷新，相当于我们直接加载了一个新的页面。从而导致之前我们想要保留的数据全没了。
+而AJAX的最大优点，就是能在不更新整个页面的前提下维护数据。这使得Web应用程序更为迅捷地回应用户动作，并避免了在网络上发送那些没有改变的信息。</p>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="Ajax不是单一的技术，而是四种技术的集合"><a href="#Ajax不是单一的技术，而是四种技术的集合" class="headerlink" title="Ajax不是单一的技术，而是四种技术的集合"></a>Ajax不是单一的技术，而是四种技术的集合</h2><style>
+.test{margin:15px;}
+</style>
+
+<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><div class="test">JavaScript是通用的脚本语言，用来嵌入在某种应用中。Web浏览器中嵌入的JavaScript解释器允许用过程序与浏览器的很多内建功能交互。Ajax应用程序是使用JavaScript编写的。</div>
+
+<h4 id="CSS（层叠样式表）"><a href="#CSS（层叠样式表）" class="headerlink" title="CSS（层叠样式表）"></a>CSS（层叠样式表）</h4><div class="test">CSS为Web页面元素提供了一种可重用的可视化样式的定义方法。它提供了简单而又强大的方法，以一致的方式定义和使用可视化样式。在Ajax应用中，用户界面的样式可以通过CSS独立修改。</div>
+
+<h4 id="DOM（文档对象模型）"><a href="#DOM（文档对象模型）" class="headerlink" title="DOM（文档对象模型）"></a>DOM（文档对象模型）</h4><div class="test">DOM以一组可以使用JavaScript操作的可编程对象展现出Web页面的结构。通过使用脚本修改DOM，Ajax应用程序可以运行时改变用户界面，或者高效的重绘页面中的某个部分。</div>
+
+<h4 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h4><div class="test">XMLHttpRequest对象允许Web程序员从Web服务器以后台活动的方式获取数据。数据格式通常是XML，但是也可以很好的支持任何基于文本的数据格式（XMLHttpRequest这个名字取得是在是很不恰当）。尽管XMLHttpRequest对于完成这件工作来说最为灵活和通用的工具，但还有其他方法也可以从服务器获取数据。</div>
+
+<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><img src=".../Image/AJAX_explain.jpg" alt="图片"></p>
+<pre><code>function 方法名(){
+
+// 1、创建AJAX核心对象XMLHttoRequest，这个对象可以启动一个线程和服务器交互，代替UI线程
+var xhr;
+if(window.XMLHttpRequest){//多数游览器都内置该对象
+    xhr = new XMLHttpRequest();
+else if(window.ActiveXObject){//IE5、IE6内置对象是ActiveXObject
+    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+// 2、注册回调函数
+xhr = onreadystatechange = function(参数1){
+     if ( xhr.readyState == 4 ）{
+         //接受服务器响应完毕
+       if( xhr.status == 200 ) {    //响应正常结束
+          //设置局部刷新的内容
+（重点:如何接受服务器相应的文本内容 XMLHttpRequest对象的respnseText或是responseXML方法 能接收servlet里response。getWriter().print(&quot;&quot;)里面返回的内容）
+          document.getElementById(&quot;&quot;).innerHTML = xhr.responseText;
+       }else if( xhr.status == 404 ){
+           alert(&quot;404-Not Found&quot;);
+       }else if( xhr.status == 500 ){
+           alert(&quot;500-Server Inner Error&quot;);
+       }else {
+           alert( xhr.status+&quot;-未知错误&quot;);
+       }
+
+     } 
+};
+// 3、开通通道，但不发送请求
+/**
+*   open(method,url,async,username,password)
+*   method:     请求方法(GET/POST/PUT/DELECT)
+*   url:        统一资源定位符
+*   async:      指定支持异步还是同步机制(true:异步，false:同步)
+*
+**/
+
+/*
+    get请求会有缓存问题:对于相同的输入只会提交一次
+    解决方法： 加入时间戳使得每次发送的参数都不同
+*/
+var timeStamp = new Date().getTime();
+xhr.open(&quot;GET&quot;,&quot;/请求地址?参数名=&quot;+参数1&amp;_=timeStamp,&quot;true&quot;);
+// 4、发送请求
+//send(body) send里面放的是请求体，由于get方法没有请求体，所以不需要
+xhr.send();
+
+}
+}</code></pre><p>上面的请求方式是get请求，如果换成post请求，则后两段代码为</p>
+<pre><code>//注册回调函数
+xhr.onreadystatechange = callback;
+//打开通道
+xhr.open(&quot;POST&quot;,&quot;请求路径&quot;,&quot;true&quot;);
+//只有表单才能提交POST请求，所以必须设置请求头内容类型（模拟表单提交数据）
+xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded;charset=UTF-8&quot;); 
+//不需要记第二个参数，创建一个form表单，enctype属性默认值
+
+//发送请求(请求体)
+xhr.send(&quot;参数名=&quot;+参数);   //字符串拼接
+
+function callback(){
+    //回调函数 同上面get请求
+}</code></pre><p>写完这些之后，就要创建请求路径对应的servlet，在web.xml文件中配置serlvet,servlet-mapping中的请求地址就是我们在上面写的请求路径 </p>
+<pre><code>//其中注册回调函数还有多种种方式
+
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;注册句柄方式&lt;/title&gt;
+    &lt;script&gt;
+        function sayHello(){
+            alert(&quot;Hello World&quot;);
+        }
+
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- 给按钮注册事件句柄onclick的第一种方式，最常用的方式，直接在标签中编写onclick属性即可 --&gt;
+    &lt;!-- 注册的过程不会执行，只有注册成功了，并且发生了特殊的时间被注册的js代码才会执行 --&gt;
+    &lt;input type=&quot;button&quot; value=&quot;点击按钮&quot; onclick=&quot;sayHello()&quot;/&gt;
+    &lt;br&gt;
+    &lt;br&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;点击按钮&quot; id=&quot;myButton&quot;/&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;script&gt;
+    //给按钮注册onclick事件句柄的第二种方式，使用js代码
+    var myButton = document.getElementById(&quot;myButton&quot;);
+    //注册的时候不会执行js代码，只是注册，当发生特殊事件之后被注册的js代码才会执行
+    myButton.onclick = function(){
+        alert(&quot;Hello Kitty&quot;);
+    };
+
+&lt;/script&gt;</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,99 +320,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">递归思想</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/">递归思想</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">递归</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX局部刷新-提高用户体验必备技术"><span class="toc-number">1.</span> <span class="toc-text">AJAX局部刷新 提高用户体验必备技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ajax不是单一的技术，而是四种技术的集合"><span class="toc-number">1.1.</span> <span class="toc-text">Ajax不是单一的技术，而是四种技术的集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JavaScript"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">JavaScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS（层叠样式表）"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">CSS（层叠样式表）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM（文档对象模型）"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">DOM（文档对象模型）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XMLHttpRequest对象"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">XMLHttpRequest对象</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/02/%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%EF%BC%88%E9%9D%9E404%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:16:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/02/%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%EF%BC%88%E9%9D%9E404%EF%BC%89/">游览器为什么会出现空白界面（非404）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">科普</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -324,8 +460,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
