@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>递归思想 | 博客</title>
+  <title>redis学习笔记（二） | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
-<meta name="keywords" content="递归">
+  <meta name="description" content="&amp;emsp;   3. 命令操作 redis的数据结构：  redis存储的是：&amp;emsp;&amp;emsp;key,value格式的数据，其中key都是字符串，value有5种不同的数据结构 value的数据结构：  1) 字符串类型 string  2) 哈希类型 hash ： map格式    3) 列表类型 list ： linkedlist格式。支持重复元素  4) 集合类型 set  ：">
+<meta name="keywords" content="radis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="递归思想">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;02&#x2F;%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3&#x2F;index.html">
+<meta property="og:title" content="redis学习笔记（二）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;04&#x2F;redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
+<meta property="og:description" content="&amp;emsp;   3. 命令操作 redis的数据结构：  redis存储的是：&amp;emsp;&amp;emsp;key,value格式的数据，其中key都是字符串，value有5种不同的数据结构 value的数据结构：  1) 字符串类型 string  2) 哈希类型 hash ： map格式    3) 列表类型 list ： linkedlist格式。支持重复元素  4) 集合类型 set  ：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-02T12:57:39.146Z">
+<meta property="og:updated_time" content="2019-12-07T01:40:28.549Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -163,7 +163,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-递归思想" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis学习笔记（二）" class="article article-type-post " itemscope itemprop="blogPost">
 
   
   <div class="article-inner">
@@ -172,13 +172,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      递归思想
+      redis学习笔记（二）
     </h1>
   
 
         
-        <a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+        <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-04T08:27:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
 </a>
 
 
@@ -195,33 +195,135 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归思想"><a href="#递归思想" class="headerlink" title="递归思想"></a>递归思想</h1><p><span>递归简单来说是一种函数自己调用自己的编程技巧</span></p>
-<p><span>递归的基本思想就是<strong>规模大的问题转化为规模小的相似的子问题来解决</strong>。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。</span></p>
-<a id="more"></a>
-
-<iframe  height=400 width=690 src="https://player.bilibili.com/player.html?aid=76689703&cid=131176297&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h3 id="循环与递归"><a href="#循环与递归" class="headerlink" title="循环与递归"></a>循环与递归</h3><p>相比较递归而言，循环的效率远高于递归。递归是函数调用自身，而函数调用是有时间和空间的消耗的：每一次函数调用，都需要在内存栈中分配空间以保存参数、返回地址及临时变量，而且往栈里压入数据和弹出数据都需要时间。所以不难理解递归的实现效率不如循环。</p>
-<p>此外，递归中有可能很多计算都是重复的，从而对性能带来很大的负面影响。递归的本质是把一个问题分解成两个或者多个问题。如果多个问题存在相互重叠的部分，那么就存在重复计算。</p>
-<p>但是有一些复杂的问题，我们难以通过循环来解决（或是需要多重循环嵌套），<br>对于这些问题，我们通常使用递归来解决（容易理解）。</p>
-<p>例如：</p>
-<p style="text-indent:3em">1.汉诺塔</p> 
-<p style="text-indent:3em">2.树的遍历</p> 
-<p style="text-indent:3em">3.斐波那契数列</p> 
-<p style="text-indent:3em">.  .  .  .  .  .  .  .  . . . . . . . . . </p>
+        <br>
+&emsp;
 
 
+<h2 id="3-命令操作"><a href="#3-命令操作" class="headerlink" title="3. 命令操作"></a>3. 命令操作</h2><ol>
+<li><p>redis的数据结构：<br></p>
+<ul>
+<li>redis存储的是：<br><br>&emsp;&emsp;key,value格式的数据，其中key都是字符串，value有5种不同的数据结构</li>
+<li>value的数据结构：<br><br>  1) 字符串类型 string<br><br>  2) 哈希类型 hash ： map格式  <br><br>  3) 列表类型 list ： linkedlist格式。支持重复元素<br><br>  4) 集合类型 set  ： 不允许重复元素<br><br>  5) 有序集合类型 sortedset：不允许重复元素，且元素有顺序<br><a id="more"></a></li>
+</ul>
+</li>
+<li><p>字符串类型 string<br></p>
+<ol>
+<li>存储： set key value<br><br>  127.0.0.1:6379&gt; set username zhangsan<br><br>  OK</li>
+<li>获取： get key<br><br> 127.0.0.1:6379&gt; get username<br><br> “zhangsan”</li>
+<li>删除： del key<br><br> 127.0.0.1:6379&gt; del age<br><br> (integer) 1<br></li>
+</ol>
+</li>
+<li><p>哈希类型 hash<br></p>
+<ol>
+<li><p>存储： hset key field value<br><br> 127.0.0.1:6379&gt; hset myhash username lisi<br><br> (integer) 1<br><br> 127.0.0.1:6379&gt; hset myhash password 123<br><br> (integer) 1<br></p>
+</li>
+<li><p>获取： <br></p>
+<ul>
+<li><p>hget key field: 获取指定的field对应的值<br><br>  127.0.0.1:6379&gt; hget myhash username<br><br>  “lisi”<br></p>
+</li>
+<li><p>hgetall key：获取所有的field和value<br><br>  127.0.0.1:6379&gt; hgetall myhash<br><br>  1) “username”<br><br>  2) “lisi”<br><br>  3) “password”<br><br>  4) “123”<br></p>
+<ol start="3">
+<li>删除： hdel key field<br><br> 127.0.0.1:6379&gt; hdel myhash username<br><br> (integer) 1<br></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>列表类型 list:可以添加一个元素到列表的头部（左边）或者尾部（右边）<br></p>
+<ol>
+<li><p>添加：<br></p>
+<ol>
+<li><p>lpush key value: 将元素加入列表左表<br></p>
+</li>
+<li><p>rpush key value：将元素加入列表右边<br></p>
+<p>&emsp;&emsp;&emsp;&emsp; 127.0.0.1:6379&gt; lpush myList a<br><br>&emsp;&emsp;&emsp;&emsp; (integer) 1<br><br>&emsp;&emsp;&emsp;&emsp; 127.0.0.1:6379&gt; lpush myList <br><br>&emsp;&emsp;&emsp;&emsp; (integer) 2<br><br>&emsp;&emsp;&emsp;&emsp; 127.0.0.1:6379&gt; rpush myList c<br><br>&emsp;&emsp;&emsp;&emsp; (integer) 3<br></p>
+</li>
+</ol>
+</li>
+<li><p>获取：<br></p>
+<ul>
+<li>lrange key start end ：范围获取<br><br>  127.0.0.1:6379&gt; lrange myList 0 -1<br><br>  1) “b”<br><br>  2) “a”<br><br>  3) “c”<br></li>
+</ul>
+</li>
+<li><p>删除：<br></p>
+<ul>
+<li>lpop key： 删除列表最左边的元素，并将元素返回</li>
+<li>rpop key： 删除列表最右边的元素，并将元素返回</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>    5. 集合类型 set ： 不允许重复元素&lt;br&gt;
+        1. 存储：sadd key value&lt;br&gt;
+            &amp;emsp;127.0.0.1:6379&gt; sadd myset a&lt;br&gt;
+            &amp;emsp;(integer) 1&lt;br&gt;
+            &amp;emsp;127.0.0.1:6379&gt; sadd myset a&lt;br&gt;
+            &amp;emsp;(integer) 0&lt;br&gt;
+        2. 获取：smembers key:获取set集合中所有元素&lt;br&gt;
+        &amp;emsp;    127.0.0.1:6379&gt; smembers myset&lt;br&gt;
+        &amp;emsp; 1)&quot;a&quot;&lt;br&gt;
+        3. 删除：srem key value:删除set集合中的某个元素    &lt;br&gt;
+            127.0.0.1:6379&gt; srem myset a&lt;br&gt;
+            (integer) 1&lt;br&gt;
+    6. 有序集合类型 sortedset：不允许重复元素，且元素有顺序.每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
+
+        1. 存储：zadd key score value&lt;br&gt;
+            127.0.0.1:6379&gt; zadd mysort 60 zhangsan&lt;br&gt;
+            (integer) 1&lt;br&gt;
+            127.0.0.1:6379&gt; zadd mysort 50 lisi&lt;br&gt;
+            (integer) 1&lt;br&gt;
+            127.0.0.1:6379&gt; zadd mysort 80 wangwu&lt;br&gt;
+            (integer) 1&lt;br&gt;
+        2. 获取：zrange key start end [withscores]&lt;br&gt;
+            127.0.0.1:6379&gt; zrange mysort 0 -1&lt;br&gt;
+            1) &quot;lisi&quot;&lt;br&gt;
+            2) &quot;zhangsan&quot;&lt;br&gt;
+            3) &quot;wangwu&quot;&lt;br&gt;
+
+            127.0.0.1:6379&gt; zrange mysort 0 -1 withscores&lt;br&gt;
+            1) &quot;zhangsan&quot;&lt;br&gt;
+            2) &quot;60&quot;&lt;br&gt;
+            3) &quot;wangwu&quot;&lt;br&gt;
+            4) &quot;80&quot;&lt;br&gt;
+            5) &quot;lisi&quot;&lt;br&gt;
+            6) &quot;500&quot;&lt;br&gt;
+        3. 删除：zrem key value&lt;br&gt;
+        &amp;emsp;&amp;emsp;127.0.0.1:6379&gt; zrem mysort lisi&lt;br&gt;
+        &amp;emsp;&amp;emsp;(integer) 1&lt;br&gt;
+
+    7. 通用命令
+        1. keys * : 查询所有的键
+        2. type key ： 获取键对应的value的类型
+        3. del key：删除指定的key value
 
 
+4. 持久化
+    1. redis是一个内存数据库，当redis服务器重启，获取电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。
+    2. redis持久化机制：
+        1. RDB：默认方式，不需要进行配置，默认就使用这种机制
+            * 在一定的间隔时间中，检测key的变化情况，然后持久化数据
+            1. 编辑redis.windwos.conf文件
+                #after 900 sec (15 min) if at least 1 key &lt;br&gt;
+                （在900秒后，至少有1个key发生改变就持久化一次）&lt;br&gt;
+                changed&lt;br&gt;
+                save 900 1&lt;br&gt;
+                #after 300 sec (5 min) if at least 10 keys （在300秒后，至少有5个key发生改变就持久化一次）&lt;br&gt;changed&lt;br&gt;
+                save 300 10&lt;br&gt;
+                #after 60 sec if at least 10000 keys changed&lt;br&gt;（在60秒后，至少有10000个key发生改变就持久化一次）&lt;br&gt;
+                save 60 10000&lt;br&gt;
 
-<h1 id="递归三要素"><a href="#递归三要素" class="headerlink" title="递归三要素"></a>递归三要素</h1><h3 id="1、明确终止条件"><a href="#1、明确终止条件" class="headerlink" title="1、明确终止条件"></a>1、明确终止条件</h3><p style="text-indent:2em">递归是一种自己调用自己的方法，如果没有明确的终止条件，当前线程会讲递归方法重复压栈到内存当中，最终导致栈的溢出。<p>
+            2. 重新启动redis服务器，并指定配置文件名称
+                D:\JavaWeb2018\day23_redis\资料\redis\windows-64\redis-2.8.9&gt;redis-server.exe redis.windows.conf    
 
-<p style="text-indent:2em">我们还要注意不要递归的太深，否则也会导致栈溢出。递归函数调用的太深，需要太多的内存，递归里用到的局部变量存储在堆栈中，堆栈的访问效率高，速度快，但空间有限，递归太多变量需要一直入栈而不出栈，导致需要的内存空间大于堆栈的空间。</p>
+        2. AOF：日志记录的方式，可以记录每一条命令的操作。可以每一次命令操作后，持久化数据
+            1. 编辑redis.windwos.conf文件
+                appendonly no（关闭aof） --&gt; appendonly yes （开启aof）
 
-
-<h3 id="2、给出递归终止时的处理方法"><a href="#2、给出递归终止时的处理方法" class="headerlink" title="2、给出递归终止时的处理方法"></a>2、给出递归终止时的处理方法</h3><p style="text-indent:2em">递归的临界点存在一种简单情境，在这种简单情境下，我们应该直接给出问题的解决方案。一般地，在这种情境下，问题的解决方案是直观的、容易的。</p>
-
-<h3 id="3、提取重复的逻辑，缩小问题规模"><a href="#3、提取重复的逻辑，缩小问题规模" class="headerlink" title="3、提取重复的逻辑，缩小问题规模"></a>3、提取重复的逻辑，缩小问题规模</h3><p style="text-indent:2em">递归问题必须可以分解为若干个规模较小、与原问题形式相同的子问题，这些子问题可以用相同的解题思路来解决。</p> 
+                #appendfsync always ： 每一次操作都进行持久化&lt;br&gt;
+                appendfsync everysec ： 每隔一秒进行一次持久化&lt;br&gt;
+                #appendfsync no     ： 不进行持久化&lt;br&gt;</code></pre>
       
 
       
@@ -238,13 +340,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">递归</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">radis</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaWeb//" class="article-tag-list-link color3">JavaWeb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -294,7 +407,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +421,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          AJAX异步局部刷新
+          redis学习笔记（三）
         
       </div>
     </a>
   
   
-    <a href="/2019/12/02/%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%EF%BC%88%E9%9D%9E404%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">游览器为什么会出现空白界面（非404）</div>
+    <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis学习笔记（一）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -346,7 +459,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#递归思想"><span class="toc-number">1.</span> <span class="toc-text">递归思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环与递归"><span class="toc-number">1.0.1.</span> <span class="toc-text">循环与递归</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归三要素"><span class="toc-number">2.</span> <span class="toc-text">递归三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、明确终止条件"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、明确终止条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、给出递归终止时的处理方法"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、给出递归终止时的处理方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、提取重复的逻辑，缩小问题规模"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、提取重复的逻辑，缩小问题规模</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-命令操作"><span class="toc-number">1.</span> <span class="toc-text">3. 命令操作</span></a></li></ol>
                     </div>
                 </span>
             </div>

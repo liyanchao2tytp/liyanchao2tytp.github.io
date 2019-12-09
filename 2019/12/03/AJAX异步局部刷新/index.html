@@ -9,17 +9,17 @@
   <title>AJAX异步局部刷新 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="AJAX局部刷新 提高用户体验必备技术首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。">
-<meta name="keywords" content="科普,学习">
+<meta name="keywords" content="AJAX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX异步局部刷新">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;index.html">
 <meta property="og:site_name" content="博客">
 <meta property="og:description" content="AJAX局部刷新 提高用户体验必备技术首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;...&#x2F;Image&#x2F;AJAX_explain.jpg">
-<meta property="og:updated_time" content="2019-12-04T07:20:03.226Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;QtksRP.md.jpg">
+<meta property="og:updated_time" content="2019-12-07T05:22:02.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0&#x2F;...&#x2F;Image&#x2F;AJAX_explain.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;QtksRP.md.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -166,6 +166,8 @@
           </div>
           <div id="js-content" class="content-ll">
             <article id="post-AJAX异步局部刷新" class="article article-type-post " itemscope itemprop="blogPost">
+
+  
   <div class="article-inner">
     
       <header class="article-header">
@@ -180,12 +182,23 @@
         <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" class="archive-article-date">
   	<time datetime="2019-12-03T10:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
+
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
         
       </header>
     
+	
+	
+	
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="AJAX局部刷新-提高用户体验必备技术"><a href="#AJAX局部刷新-提高用户体验必备技术" class="headerlink" title="AJAX局部刷新 提高用户体验必备技术"></a>AJAX局部刷新 提高用户体验必备技术</h1><p style="text-indent:2em">首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。</p>
+<a href="https://imgse.com/i/QtksRP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/12/07/QtksRP.md.jpg" alt="QtksRP.jpg" border="0" /></a>
 <a id="more"></a>
 <p style="text-indent:2em">比如有些软件的注册页面，我们填写了一大堆用户信息，好不容易到了验证码环节，或者提交环节，却因为我们一项信息写错了而导致我们之前写的所有信息都没了。又要重现再来一遍。用户体验极差，有时候甚至直接放弃了这款软件。还有一些视频网页，我们在播放视频的时候登录账户，然后一个自动刷新，重新看一遍广告，重新缓存视频。这些刷新都是游览器的UI线程进行的刷新，是一个全局刷新，相当于我们直接加载了一个新的页面。从而导致之前我们想要保留的数据全没了。
 而AJAX的最大优点，就是能在不更新整个页面的前提下维护数据。这使得Web应用程序更为迅捷地回应用户动作，并避免了在网络上发送那些没有改变的信息。</p>
@@ -202,7 +215,7 @@
 
 <h4 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h4><div class="test">XMLHttpRequest对象允许Web程序员从Web服务器以后台活动的方式获取数据。数据格式通常是XML，但是也可以很好的支持任何基于文本的数据格式（XMLHttpRequest这个名字取得是在是很不恰当）。尽管XMLHttpRequest对于完成这件工作来说最为灵活和通用的工具，但还有其他方法也可以从服务器获取数据。</div>
 
-<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><img src=".../Image/AJAX_explain.jpg" alt="图片"></p>
+<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
 <pre><code>function 方法名(){
 
 // 1、创建AJAX核心对象XMLHttoRequest，这个对象可以启动一个线程和服务器交互，代替UI线程
@@ -302,6 +315,10 @@ function callback(){
 
       
     </div>
+	
+	
+
+	
     <div class="article-info article-info-index">
       
       
@@ -310,17 +327,24 @@ function callback(){
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">科普</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">AJAX</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaWeb//" class="article-tag-list-link color3">JavaWeb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -384,6 +408,15 @@ function callback(){
   
 <nav id="article-nav">
   
+    <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          redis学习笔记（一）
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">递归思想</div>
@@ -424,6 +457,9 @@ function callback(){
 
 
 
+
+
+
   
   
   
@@ -433,6 +469,11 @@ function callback(){
   
 
   
+
+
+
+	 
+
 
 
           </div>
@@ -449,11 +490,26 @@ function callback(){
       	</div>
     </div>
   </div>
+  
+  
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="/busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
 </footer>
 
 
 <!--页面点击小红心-->
 <script type="text/javascript" src="/love.js"></script>
+<!--网站访问量-->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     </div>
     <script>
@@ -530,15 +586,51 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Junit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">反射</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">科普</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,5 +791,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400,"hOffset":50,"vOffset":-50},"mobile":{"show":false}});</script></body>
+</body>
 </html>

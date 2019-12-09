@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>递归思想 | 博客</title>
+  <title>redis学习笔记（一） | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
-<meta name="keywords" content="递归">
+  <meta name="description" content="redis（NOSQL）数据库学习笔记 .text{margin-left:20px;}    redis: 1. 概念（一） 2. 下载安装（一） 3. 命令操作（二） 1. 数据结构 4. 持久化操作（二） 5. 使用Java客户端操作redis三     Redis1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库">
+<meta name="keywords" content="radis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="递归思想">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;02&#x2F;%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3&#x2F;index.html">
+<meta property="og:title" content="redis学习笔记（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;04&#x2F;redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
+<meta property="og:description" content="redis（NOSQL）数据库学习笔记 .text{margin-left:20px;}    redis: 1. 概念（一） 2. 下载安装（一） 3. 命令操作（二） 1. 数据结构 4. 持久化操作（二） 5. 使用Java客户端操作redis三     Redis1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-02T12:57:39.146Z">
+<meta property="og:updated_time" content="2019-12-08T10:01:56.064Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -163,7 +163,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-递归思想" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis学习笔记（一）" class="article article-type-post " itemscope itemprop="blogPost">
 
   
   <div class="article-inner">
@@ -172,13 +172,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      递归思想
+      redis学习笔记（一）
     </h1>
   
 
         
-        <a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+        <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-04T08:27:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
 </a>
 
 
@@ -195,33 +195,73 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归思想"><a href="#递归思想" class="headerlink" title="递归思想"></a>递归思想</h1><p><span>递归简单来说是一种函数自己调用自己的编程技巧</span></p>
-<p><span>递归的基本思想就是<strong>规模大的问题转化为规模小的相似的子问题来解决</strong>。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。</span></p>
-<a id="more"></a>
+        <h1 id="redis（NOSQL）数据库学习笔记"><a href="#redis（NOSQL）数据库学习笔记" class="headerlink" title="redis（NOSQL）数据库学习笔记"></a>redis（NOSQL）数据库学习笔记</h1><style>
+.text{margin-left:20px;}
+</style>
 
-<iframe  height=400 width=690 src="https://player.bilibili.com/player.html?aid=76689703&cid=131176297&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<p> <font size=5>redis:</font><br> <p style="text-indent:3em">1. 概念（一）</p><br> <p style="text-indent:3em">2. 下载安装（一）</p><br> <p style="text-indent:3em">3. 命令操作（二）</p><br> <p style="text-indent:5em">1. 数据结构</p><br> <p style="text-indent:3em">4. 持久化操作（二）</p><br> <p style="text-indent:3em">5. 使用Java客户端操作redis三</p><br>   <p style="text-indent:3em"></p> </p>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="1-概念：-redis是一款高性能的NOSQL系列的非关系型数据库"><a href="#1-概念：-redis是一款高性能的NOSQL系列的非关系型数据库" class="headerlink" title="1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库"></a>1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库</h2><a id="more"></a>
+<h3 id="1-1-什么是NOSQL"><a href="#1-1-什么是NOSQL" class="headerlink" title="1.1.什么是NOSQL"></a>1.1.什么是NOSQL</h3><div class="text">
+&nbsp&nbsp&nbsp&nbsp&nbsp NoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。
+随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。
+</div>
 
-<h3 id="循环与递归"><a href="#循环与递归" class="headerlink" title="循环与递归"></a>循环与递归</h3><p>相比较递归而言，循环的效率远高于递归。递归是函数调用自身，而函数调用是有时间和空间的消耗的：每一次函数调用，都需要在内存栈中分配空间以保存参数、返回地址及临时变量，而且往栈里压入数据和弹出数据都需要时间。所以不难理解递归的实现效率不如循环。</p>
-<p>此外，递归中有可能很多计算都是重复的，从而对性能带来很大的负面影响。递归的本质是把一个问题分解成两个或者多个问题。如果多个问题存在相互重叠的部分，那么就存在重复计算。</p>
-<p>但是有一些复杂的问题，我们难以通过循环来解决（或是需要多重循环嵌套），<br>对于这些问题，我们通常使用递归来解决（容易理解）。</p>
-<p>例如：</p>
-<p style="text-indent:3em">1.汉诺塔</p> 
-<p style="text-indent:3em">2.树的遍历</p> 
-<p style="text-indent:3em">3.斐波那契数列</p> 
-<p style="text-indent:3em">.  .  .  .  .  .  .  .  . . . . . . . . . </p>
+<h4 id="1-1-1-NOSQL和关系型数据库比较"><a href="#1-1-1-NOSQL和关系型数据库比较" class="headerlink" title="1.1.1.NOSQL和关系型数据库比较"></a>1.1.1.NOSQL和关系型数据库比较</h4><p style="text-indent:1em">优点：</p> 
+
+<div class="text">
+ 1）成本：nosql数据库简单易部署，基本都是开源软件，不需要像使用oracle那样花费大量成本购买使用，相比关系型数据库价格便宜。
+
+<p> 2）查询速度：nosql数据库将数据存储于缓存之中，关系型数据库将数据存储在硬盘中，自然查询速度远不及nosql数据库。</p>
+<p> 3）存储数据的格式：nosql的存储格式是key,value形式、文档形式、图片形式等等，所以可以存储基础类型以及对象或者是集合等各种格式，而数据库则只支持基础类型。</p>
+<p> 4）扩展性：关系型数据库有类似join这样的多表查询机制的限制导致扩展很艰难。</p>
+</div>
+<p style="text-indent:1em">缺点：</p> 
+<div class="text">
+1）维护的工具和资料有限，因为nosql是属于新的技术，不能和关系型数据库10几年的技术同日而语。
+2）不提供对sql的支持，如果不支持sql这样的工业标准，将产生一定用户的学习和使用成本。
+3）不提供关系型数据库对事务的处理。
+</div>
 
 
+<h4 id="1-1-2-非关系型数据库的优势"><a href="#1-1-2-非关系型数据库的优势" class="headerlink" title="1.1.2.    非关系型数据库的优势"></a>1.1.2.    非关系型数据库的优势</h4><div class="text">
+1）性能NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解析，所以性能非常高。
 
+<p>2）可扩展性同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。</p>
+<div>
 
+<h4 id="1-1-3-关系型数据库的优势："><a href="#1-1-3-关系型数据库的优势：" class="headerlink" title="1.1.3.    关系型数据库的优势："></a>1.1.3.    关系型数据库的优势：</h4><div class="text">
+1）复杂查询可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。
 
-<h1 id="递归三要素"><a href="#递归三要素" class="headerlink" title="递归三要素"></a>递归三要素</h1><h3 id="1、明确终止条件"><a href="#1、明确终止条件" class="headerlink" title="1、明确终止条件"></a>1、明确终止条件</h3><p style="text-indent:2em">递归是一种自己调用自己的方法，如果没有明确的终止条件，当前线程会讲递归方法重复压栈到内存当中，最终导致栈的溢出。<p>
+<p>2）事务支持使得对于安全性能很高的数据访问要求得以实现。对于这两类数据库，对方的优势就是自己的弱势，反之亦然。        </p>
+<div>
 
-<p style="text-indent:2em">我们还要注意不要递归的太深，否则也会导致栈溢出。递归函数调用的太深，需要太多的内存，递归里用到的局部变量存储在堆栈中，堆栈的访问效率高，速度快，但空间有限，递归太多变量需要一直入栈而不出栈，导致需要的内存空间大于堆栈的空间。</p>
+<h4 id="1-1-4-总结"><a href="#1-1-4-总结" class="headerlink" title="1.1.4.    总结"></a>1.1.4.    总结</h4><div class="text">
+关系型数据库与NoSQL数据库并非对立而是互补的关系，即通常情况下使用关系型数据库，在适合使用NoSQL的时候使用NoSQL数据库，
+让NoSQL数据库对关系型数据库的不足进行弥补。
+一般会将数据存储在关系型数据库中，在nosql数据库中备份存储关系型数据库的数据
+<div>
 
+<h3 id="1-2-主流的NOSQL产品"><a href="#1-2-主流的NOSQL产品" class="headerlink" title="1.2.主流的NOSQL产品"></a>1.2.主流的NOSQL产品</h3><p>•   键值(Key-Value)存储数据库<br/><br>&emsp;&emsp;&emsp;相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB<br/><br>&emsp;&emsp;&emsp;典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 <br/><br>&emsp;&emsp;&emsp;数据模型： 一系列键值对<br/><br>&emsp;&emsp;&emsp;优势： 快速查询<br/><br>&emsp;&emsp;&emsp;劣势： 存储的数据缺少结构化<br/></p>
+<p>•   列存储数据库<br><br>&emsp;&emsp;&emsp;相关产品：Cassandra, HBase, Riak<br><br>&emsp;&emsp;&emsp;典型应用：分布式的文件系统<br><br>&emsp;&emsp;&emsp;数据模型：以列簇式存储，将同一列数据存在一起<br><br>&emsp;&emsp;&emsp;优势：查找速度快，可扩展性强，更容易进行分布式扩展<br><br>&emsp;&emsp;&emsp;劣势：功能相对局限<br></p>
+<p>•   文档型数据库<br><br>&emsp;&emsp;&emsp;相关产品：CouchDB、MongoDB<br><br>&emsp;&emsp;&emsp;典型应用：Web应用（与Key-Value类似，Value是结构化的）<br><br>&emsp;&emsp;&emsp;数据模型： 一系列键值对<br><br>&emsp;&emsp;&emsp;优势：数据结构要求不严格<br><br>&emsp;&emsp;&emsp;劣势： 查询性能不高，而且缺乏统一的查询语法<br></p>
+<p>•   图形(Graph)数据库<br><br>&emsp;&emsp;&emsp;相关数据库：Neo4J、InfoGrid、Infinite Graph<br><br>&emsp;&emsp;&emsp;典型应用：社交网络<br><br>&emsp;&emsp;&emsp;数据模型：图结构<br><br>&emsp;&emsp;&emsp;优势：利用图结构相关算法。<br><br>&emsp;&emsp;&emsp;劣势：需要对整个图做计算才能得出结果，不容易做分布式的案。<br></p>
+<h3 id="1-3-什么是Redis"><a href="#1-3-什么是Redis" class="headerlink" title="1.3 什么是Redis"></a>1.3 什么是Redis</h3><p>Redis是用C语言开发的一个开源的高性能键值对（key-value）数据库，官方提供测试数据，50个并发执行100000个请求,读的速度是110000次/s,写的速度是81000次/s ，且Redis通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止Redis支持的键值数据类型如下：<br><br/></p>
+<p>1) 字符串类型 string<br/><br>2) 哈希类型 hash<br/><br>3) 列表类型 list<br/><br>4) 集合类型 set<br/><br>5) 有序集合类型 sortedset<br/></p>
+<h4 id="1-3-1-redis的应用场景"><a href="#1-3-1-redis的应用场景" class="headerlink" title="1.3.1 redis的应用场景"></a>1.3.1 redis的应用场景</h4><p>&emsp;•&emsp;缓存（数据查询、短连接、新闻内容、商品内容等等）<br><br>&emsp;•&emsp;聊天室的在线好友列表<br><br>&emsp;•&emsp;任务队列。（秒杀、抢购、12306等等）<br><br>&emsp;•&emsp;应用排行榜<br><br>&emsp;•&emsp;网站访问统计<br><br>&emsp;•&emsp;数据过期处理（可以精确到毫秒<br><br>&emsp;•&emsp;分布式集群架构中的session分离<br></p>
+<h2 id="2-下载安装"><a href="#2-下载安装" class="headerlink" title="2. 下载安装"></a>2. 下载安装</h2><ol>
+<li><p>官网：<a href="https://redis.io" target="_blank" rel="noopener">https://redis.io</a></p>
+</li>
+<li><p>中文网：<a href="http://www.redis.net.cn/" target="_blank" rel="noopener">http://www.redis.net.cn/</a></p>
+</li>
+<li><p>解压直接可以使用：</p>
+</li>
+</ol>
+<ul>
+<li>redis.windows.conf：配置文件</li>
+<li>redis-cli.exe：redis的客户端</li>
+<li>redis-server.exe：redis服务器端</li>
+</ul>
 
-<h3 id="2、给出递归终止时的处理方法"><a href="#2、给出递归终止时的处理方法" class="headerlink" title="2、给出递归终止时的处理方法"></a>2、给出递归终止时的处理方法</h3><p style="text-indent:2em">递归的临界点存在一种简单情境，在这种简单情境下，我们应该直接给出问题的解决方案。一般地，在这种情境下，问题的解决方案是直观的、容易的。</p>
-
-<h3 id="3、提取重复的逻辑，缩小问题规模"><a href="#3、提取重复的逻辑，缩小问题规模" class="headerlink" title="3、提取重复的逻辑，缩小问题规模"></a>3、提取重复的逻辑，缩小问题规模</h3><p style="text-indent:2em">递归问题必须可以分解为若干个规模较小、与原问题形式相同的子问题，这些子问题可以用相同的解题思路来解决。</p> 
       
 
       
@@ -238,13 +278,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">递归</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">radis</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaWeb//" class="article-tag-list-link color3">JavaWeb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -294,7 +345,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +359,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/04/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          AJAX异步局部刷新
+          redis学习笔记（二）
         
       </div>
     </a>
   
   
-    <a href="/2019/12/02/%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%EF%BC%88%E9%9D%9E404%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">游览器为什么会出现空白界面（非404）</div>
+    <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AJAX异步局部刷新</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -346,7 +397,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#递归思想"><span class="toc-number">1.</span> <span class="toc-text">递归思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环与递归"><span class="toc-number">1.0.1.</span> <span class="toc-text">循环与递归</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归三要素"><span class="toc-number">2.</span> <span class="toc-text">递归三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、明确终止条件"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、明确终止条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、给出递归终止时的处理方法"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、给出递归终止时的处理方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、提取重复的逻辑，缩小问题规模"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、提取重复的逻辑，缩小问题规模</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis（NOSQL）数据库学习笔记"><span class="toc-number">1.</span> <span class="toc-text">redis（NOSQL）数据库学习笔记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-number">2.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念：-redis是一款高性能的NOSQL系列的非关系型数据库"><span class="toc-number">2.1.</span> <span class="toc-text">1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-什么是NOSQL"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1.什么是NOSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-NOSQL和关系型数据库比较"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">1.1.1.NOSQL和关系型数据库比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-非关系型数据库的优势"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">1.1.2.    非关系型数据库的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-关系型数据库的优势："><span class="toc-number">2.1.1.3.</span> <span class="toc-text">1.1.3.    关系型数据库的优势：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-总结"><span class="toc-number">2.1.1.4.</span> <span class="toc-text">1.1.4.    总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-主流的NOSQL产品"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2.主流的NOSQL产品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-什么是Redis"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3 什么是Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-redis的应用场景"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">1.3.1 redis的应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-下载安装"><span class="toc-number">2.2.</span> <span class="toc-text">2. 下载安装</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

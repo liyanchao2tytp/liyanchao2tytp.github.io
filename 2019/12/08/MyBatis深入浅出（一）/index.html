@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>递归思想 | 博客</title>
+  <title>MyBatis深入浅出（一） | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
-<meta name="keywords" content="递归">
+  <meta name="description" content="SSM框架简单介绍SSM的全程：Spring+SpringMVC+MyBatis。">
+<meta name="keywords" content="MyBatis,入门案例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="递归思想">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;02&#x2F;%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3&#x2F;index.html">
+<meta property="og:title" content="MyBatis深入浅出（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="递归思想递归简单来说是一种函数自己调用自己的编程技巧 递归的基本思想就是规模大的问题转化为规模小的相似的子问题来解决。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。">
+<meta property="og:description" content="SSM框架简单介绍SSM的全程：Spring+SpringMVC+MyBatis。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-02T12:57:39.146Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Qahi1x.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QahWCR.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Qa7yb6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QdS1BQ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;QdHxPS.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QahX8I.png">
+<meta property="og:updated_time" content="2019-12-09T02:17:35.367Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -163,7 +171,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-递归思想" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MyBatis深入浅出（一）" class="article article-type-post " itemscope itemprop="blogPost">
 
   
   <div class="article-inner">
@@ -172,13 +180,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      递归思想
+      MyBatis深入浅出（一）
     </h1>
   
 
         
-        <a href="/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+        <a href="/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-08T10:58:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
 </a>
 
 
@@ -195,33 +203,99 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="递归思想"><a href="#递归思想" class="headerlink" title="递归思想"></a>递归思想</h1><p><span>递归简单来说是一种函数自己调用自己的编程技巧</span></p>
-<p><span>递归的基本思想就是<strong>规模大的问题转化为规模小的相似的子问题来解决</strong>。特别地，在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数调用它自身的情况，这也正是递归的定义所在。格外重要的是，这个解决问题的函数必须有明确的结束条件，否则就会导致无限递归的情况。</span></p>
+        <p><img src="https://s2.ax1x.com/2019/12/08/QaRHEj.jpg" alt="Mybatis"></p>
+<h2 id="SSM框架简单介绍"><a href="#SSM框架简单介绍" class="headerlink" title="SSM框架简单介绍"></a>SSM框架简单介绍</h2><p>SSM的全程：Spring+SpringMVC+MyBatis。</p>
 <a id="more"></a>
+<p style="text-indent:2em">
+是由Spring、MyBatis两个开源框架整合而成（SpringMVC是Spring中的部分内容）。常作为数据源较简单的web项目的框架。
+</p>
 
-<iframe  height=400 width=690 src="https://player.bilibili.com/player.html?aid=76689703&cid=131176297&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<p><img src="https://s2.ax1x.com/2019/12/08/Qahi1x.png" alt="SSM"></p>
+<h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p style="text-indent:3em">MyBatis 是一款优秀的持久层框架，是用Java编写的。</p>
 
-<h3 id="循环与递归"><a href="#循环与递归" class="headerlink" title="循环与递归"></a>循环与递归</h3><p>相比较递归而言，循环的效率远高于递归。递归是函数调用自身，而函数调用是有时间和空间的消耗的：每一次函数调用，都需要在内存栈中分配空间以保存参数、返回地址及临时变量，而且往栈里压入数据和弹出数据都需要时间。所以不难理解递归的实现效率不如循环。</p>
-<p>此外，递归中有可能很多计算都是重复的，从而对性能带来很大的负面影响。递归的本质是把一个问题分解成两个或者多个问题。如果多个问题存在相互重叠的部分，那么就存在重复计算。</p>
-<p>但是有一些复杂的问题，我们难以通过循环来解决（或是需要多重循环嵌套），<br>对于这些问题，我们通常使用递归来解决（容易理解）。</p>
-<p>例如：</p>
-<p style="text-indent:3em">1.汉诺塔</p> 
-<p style="text-indent:3em">2.树的遍历</p> 
-<p style="text-indent:3em">3.斐波那契数列</p> 
-<p style="text-indent:3em">.  .  .  .  .  .  .  .  . . . . . . . . . </p>
+<h3 id="持久层总图"><a href="#持久层总图" class="headerlink" title="持久层总图"></a>持久层总图</h3><p><img src="https://s2.ax1x.com/2019/12/08/QahWCR.jpg" alt="持久层总图"></p>
+<p style="text-indent:3em">
+它封装了JDBC操作的很多细节，使开发者只需要关注sql语句本身，而无需关注注册驱动，创建链接等复杂过程，并且
+它使用了ORM思想实现了结果集的封装
+</p>
 
+<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p style="text-indent:5em">
+Object Relational Mapping  对象关系映射
+</p>
+<p style="text-indent:3em">
+简单地说：就是把数据库表和实体类及实体类的属性对应起来，让我们可以操作实体类就可以实现操作数据库表。
+</p>
 
+<table>
+<thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">Mysql</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">user</td>
+<td align="center">User</td>
+</tr>
+<tr>
+<td align="center">id</td>
+<td align="center">UserId</td>
+</tr>
+<tr>
+<td align="center">user_name</td>
+<td align="center">UserName</td>
+</tr>
+</tbody></table>
+<h2 id="MaBatis的环境搭建"><a href="#MaBatis的环境搭建" class="headerlink" title="MaBatis的环境搭建"></a>MaBatis的环境搭建</h2><ol>
+<li><p>创建Maven工程，并导入坐标</p>
+</li>
+<li><p>创建实体类和dao层的接口</p>
+</li>
+<li><p>创建MyBatis的主配置文件</p>
+<p style="text-indent:8em">
+SqlMapConfig.xml
+</p>
+</li>
+<li><p>创建映射配置文件</p>
+<p style="text-indent:8em">
+UserDao.xml
+</p>
 
+</li>
+</ol>
+<h2 id="环境搭建的注意事项"><a href="#环境搭建的注意事项" class="headerlink" title="环境搭建的注意事项"></a>环境搭建的注意事项</h2><ol>
+<li>再Mybatis中，把持久层的操作接口名称和映射文件也叫做Mapper，所以UserDao和UserMapper时一样的</li>
+<li>再IDEA中创建目录时，包和目录时不一样的<ul>
+<li>包在创建时，com.lyc.dao是三级结构</li>
+<li>目录在创建时 com.lyc.dao是一级目录</li>
+</ul>
+</li>
+<li>Mybatis的映射配置文件位置必须和dao接口的包结构相同，即：<br><img src="https://s2.ax1x.com/2019/12/08/Qa7yb6.png" alt=""></li>
+<li>映射配置文件（SqlMapConfig.xml）的mapper标签的namespace属性的取值必须是dao接口的全限定类名：com/lyc/dao/UserDao.xml</li>
+<li>映射配置文件的操作配置（select）,id属性的取值必须是dao接口的方法名</li>
+</ol>
+<p>当我们遵守了3、4、5之后，我们在开发中就可以不用写dao接口的的实现类了。</p>
+<h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><ol>
+<li>读取配置文件</li>
+<li>创建SqlSessionFactory工厂</li>
+<li>创建SqlSession</li>
+<li>创建Dao接口的代理对象</li>
+<li>执行dao中的方法</li>
+<li>释放资源</li>
+</ol>
+<p><font color="greeblue">注意事项：</font><br>不要忘记在映射配置中告知Mybatis要封装到那个实体类中。</p>
+<ul>
+<li>配置方式：指定实体类的全限定类名<h3 id="入门案例分析"><a href="#入门案例分析" class="headerlink" title="入门案例分析"></a>入门案例分析</h3><img src="https://s2.ax1x.com/2019/12/08/QdS1BQ.png" alt=""><h2 id="MyBatis-基于注解的入门案例"><a href="#MyBatis-基于注解的入门案例" class="headerlink" title="MyBatis 基于注解的入门案例"></a>MyBatis 基于注解的入门案例</h2></li>
+</ul>
+<ol>
+<li>把UserDao.xml文件移除，在dao接口的方法上使用@Select注解，并指定Sql语句</li>
+<li>同时需要在SqlMapConfig.xml中的mapper配置时，使用class属性指定dao接口的全限定类名</li>
+</ol>
+<p><font color="greebl">踩坑：</font><br> class属性的中的全限定类名中的包名用.隔开，如果用/则会报错，找不到指定路径的java类<br> 而基于XML的映射配置文件，mapper标签中的namespace属性中的全限定类名需要用/隔开</p>
+<p><font color="greeblue">明确：</font><br>在实际开发中，越简便越好，不管使用XML还是注解配置，一般都不写dao接口的实现类。<br>但是Mybatis是支持写dao实现类的。</p>
+<h3 id="查询所有findAll-方法的分析"><a href="#查询所有findAll-方法的分析" class="headerlink" title="查询所有findAll()方法的分析"></a>查询所有findAll()方法的分析</h3><p><img src="https://s2.ax1x.com/2019/12/09/QdHxPS.png" alt="自定义mapper分析"></p>
+<p>各个步骤对应关系<br><img src="https://s2.ax1x.com/2019/12/08/QahX8I.png" alt="mybatis分析"></p>
 
-
-<h1 id="递归三要素"><a href="#递归三要素" class="headerlink" title="递归三要素"></a>递归三要素</h1><h3 id="1、明确终止条件"><a href="#1、明确终止条件" class="headerlink" title="1、明确终止条件"></a>1、明确终止条件</h3><p style="text-indent:2em">递归是一种自己调用自己的方法，如果没有明确的终止条件，当前线程会讲递归方法重复压栈到内存当中，最终导致栈的溢出。<p>
-
-<p style="text-indent:2em">我们还要注意不要递归的太深，否则也会导致栈溢出。递归函数调用的太深，需要太多的内存，递归里用到的局部变量存储在堆栈中，堆栈的访问效率高，速度快，但空间有限，递归太多变量需要一直入栈而不出栈，导致需要的内存空间大于堆栈的空间。</p>
-
-
-<h3 id="2、给出递归终止时的处理方法"><a href="#2、给出递归终止时的处理方法" class="headerlink" title="2、给出递归终止时的处理方法"></a>2、给出递归终止时的处理方法</h3><p style="text-indent:2em">递归的临界点存在一种简单情境，在这种简单情境下，我们应该直接给出问题的解决方案。一般地，在这种情境下，问题的解决方案是直观的、容易的。</p>
-
-<h3 id="3、提取重复的逻辑，缩小问题规模"><a href="#3、提取重复的逻辑，缩小问题规模" class="headerlink" title="3、提取重复的逻辑，缩小问题规模"></a>3、提取重复的逻辑，缩小问题规模</h3><p style="text-indent:2em">递归问题必须可以分解为若干个规模较小、与原问题形式相同的子问题，这些子问题可以用相同的解题思路来解决。</p> 
       
 
       
@@ -238,13 +312,28 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">递归</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">MyBatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">入门案例</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SSM//" class="article-tag-list-link color4">SSM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -294,7 +383,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/02/%E9%80%92%E5%BD%92%E6%80%9D%E6%83%B3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +397,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/03/AJAX%E5%BC%82%E6%AD%A5%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          AJAX异步局部刷新
+          MyBatis深入浅出（二）
         
       </div>
     </a>
   
   
-    <a href="/2019/12/02/%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%EF%BC%88%E9%9D%9E404%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">游览器为什么会出现空白界面（非404）</div>
+    <a href="/2019/12/07/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Junit单元测试、反射、注解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -346,7 +435,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#递归思想"><span class="toc-number">1.</span> <span class="toc-text">递归思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环与递归"><span class="toc-number">1.0.1.</span> <span class="toc-text">循环与递归</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归三要素"><span class="toc-number">2.</span> <span class="toc-text">递归三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、明确终止条件"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、明确终止条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、给出递归终止时的处理方法"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、给出递归终止时的处理方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、提取重复的逻辑，缩小问题规模"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、提取重复的逻辑，缩小问题规模</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSM框架简单介绍"><span class="toc-number">1.</span> <span class="toc-text">SSM框架简单介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyBatis"><span class="toc-number"></span> <span class="toc-text">MyBatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#持久层总图"><span class="toc-number">0.1.</span> <span class="toc-text">持久层总图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MaBatis的环境搭建"><span class="toc-number">2.</span> <span class="toc-text">MaBatis的环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建的注意事项"><span class="toc-number">3.</span> <span class="toc-text">环境搭建的注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门案例"><span class="toc-number">4.</span> <span class="toc-text">入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入门案例分析"><span class="toc-number">4.1.</span> <span class="toc-text">入门案例分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-基于注解的入门案例"><span class="toc-number">5.</span> <span class="toc-text">MyBatis 基于注解的入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询所有findAll-方法的分析"><span class="toc-number">5.1.</span> <span class="toc-text">查询所有findAll()方法的分析</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
