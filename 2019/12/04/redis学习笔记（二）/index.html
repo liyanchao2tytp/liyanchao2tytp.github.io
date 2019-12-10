@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="博客">
 <meta property="og:description" content="&amp;emsp;   3. 命令操作 redis的数据结构：  redis存储的是：&amp;emsp;&amp;emsp;key,value格式的数据，其中key都是字符串，value有5种不同的数据结构 value的数据结构：  1) 字符串类型 string  2) 哈希类型 hash ： map格式    3) 列表类型 list ： linkedlist格式。支持重复元素  4) 集合类型 set  ：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-07T01:40:28.549Z">
+<meta property="og:updated_time" content="2019-12-10T10:14:31.577Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -255,75 +255,74 @@
 </ol>
 </li>
 </ol>
-<pre><code>    5. 集合类型 set ： 不允许重复元素&lt;br&gt;
-        1. 存储：sadd key value&lt;br&gt;
-            &amp;emsp;127.0.0.1:6379&gt; sadd myset a&lt;br&gt;
-            &amp;emsp;(integer) 1&lt;br&gt;
-            &amp;emsp;127.0.0.1:6379&gt; sadd myset a&lt;br&gt;
-            &amp;emsp;(integer) 0&lt;br&gt;
-        2. 获取：smembers key:获取set集合中所有元素&lt;br&gt;
-        &amp;emsp;    127.0.0.1:6379&gt; smembers myset&lt;br&gt;
-        &amp;emsp; 1)&quot;a&quot;&lt;br&gt;
-        3. 删除：srem key value:删除set集合中的某个元素    &lt;br&gt;
-            127.0.0.1:6379&gt; srem myset a&lt;br&gt;
-            (integer) 1&lt;br&gt;
-    6. 有序集合类型 sortedset：不允许重复元素，且元素有顺序.每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
+<ol start="5">
+<li><p>集合类型 set ： 不允许重复元素<br></p>
+<ol>
+<li>存储：sadd key value<br><br> &emsp;127.0.0.1:6379&gt; sadd myset a<br><br> &emsp;(integer) 1<br><br> &emsp;127.0.0.1:6379&gt; sadd myset a<br><br> &emsp;(integer) 0<br></li>
+<li>获取：smembers key:获取set集合中所有元素<br><br>&emsp;    127.0.0.1:6379&gt; smembers myset<br><br>&emsp; 1)”a”<br></li>
+<li>删除：srem key value:删除set集合中的某个元素    <br><br> 127.0.0.1:6379&gt; srem myset a<br><br> (integer) 1<br></li>
+</ol>
+</li>
+<li><p>有序集合类型 sortedset：不允许重复元素，且元素有顺序.每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。</p>
+<ol>
+<li><p>存储：zadd key score value<br><br> 127.0.0.1:6379&gt; zadd mysort 60 zhangsan<br><br> (integer) 1<br><br> 127.0.0.1:6379&gt; zadd mysort 50 lisi<br><br> (integer) 1<br><br> 127.0.0.1:6379&gt; zadd mysort 80 wangwu<br><br> (integer) 1<br></p>
+</li>
+<li><p>获取：zrange key start end [withscores]<br><br> 127.0.0.1:6379&gt; zrange mysort 0 -1<br><br> 1) “lisi”<br><br> 2) “zhangsan”<br><br> 3) “wangwu”<br></p>
+<p> 127.0.0.1:6379&gt; zrange mysort 0 -1 withscores<br><br> 1) “zhangsan”<br><br> 2) “60”<br><br> 3) “wangwu”<br><br> 4) “80”<br><br> 5) “lisi”<br><br> 6) “500”<br></p>
+</li>
+<li><p>删除：zrem key value<br><br>&emsp;&emsp;127.0.0.1:6379&gt; zrem mysort lisi<br><br>&emsp;&emsp;(integer) 1<br></p>
+</li>
+</ol>
+</li>
+<li><p>通用命令</p>
+</li>
+</ol>
+<ul>
+<li><p>keys * : 查询所有的键</p>
+</li>
+<li><p>type key ： 获取键对应的value的类型</p>
+</li>
+<li><p>del key：删除指定的key value</p>
+</li>
+<li><p>持久化</p>
+<ul>
+<li><p>redis是一个内存数据库，当redis服务器重启，获取电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。</p>
+</li>
+<li><p>redis持久化机制：</p>
+<ul>
+<li><p>1、 RDB：默认方式，不需要进行配置，默认就使用这种机制</p>
+<ul>
+<li>在一定的间隔时间中，检测key的变化情况，然后持久化数据</li>
+</ul>
+<ol>
+<li><p>编辑redis.windwos.conf文件<br> &emsp;#after 900 sec (15 min) if at least 1 key <br><br> &emsp;（在900秒后，至少有1个key发生改变就持久化一次）<br><br> &emsp;changed<br><br> &emsp;save 900 1<br><br> &emsp;#after 300 sec (5 min) if at least 10 keys （在300秒后，至少有5个key发生改变就持久化一次）<br>&emsp;changed<br><br> &emsp;save 300 10<br><br> &emsp;#after 60 sec if at least 10000 keys changed<br>&emsp;（在60秒后，至少有10000个key发生改变就持久化一次）<br><br> &emsp;save 60 10000<br></p>
+</li>
+<li><p>重新启动redis服务器，并指定配置文件名称<br> D:\JavaWeb2018\day23_redis\资料\redis\windows-64\redis-2.8.9&gt;redis-server.exe redis.windows.conf    </p>
+</li>
+</ol>
+</li>
+<li><p>2、 AOF：日志记录的方式，可以记录每一条命令的操作。可以每一次命令操作后，持久化数据</p>
+<ol>
+<li><p>编辑redis.windwos.conf文件</p>
+<ul>
+<li><p>appendonly no（关闭aof） –&gt; appendonly yes （开启aof）</p>
+</li>
+<li><p>#appendfsync always ： 每一次操作都进行持久化<br></p>
+</li>
+<li><p>appendfsync everysec ： 每隔一秒进行一次持久化<br></p>
+</li>
+<li><p>#appendfsync no     ： 不进行持久化<br></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-        1. 存储：zadd key score value&lt;br&gt;
-            127.0.0.1:6379&gt; zadd mysort 60 zhangsan&lt;br&gt;
-            (integer) 1&lt;br&gt;
-            127.0.0.1:6379&gt; zadd mysort 50 lisi&lt;br&gt;
-            (integer) 1&lt;br&gt;
-            127.0.0.1:6379&gt; zadd mysort 80 wangwu&lt;br&gt;
-            (integer) 1&lt;br&gt;
-        2. 获取：zrange key start end [withscores]&lt;br&gt;
-            127.0.0.1:6379&gt; zrange mysort 0 -1&lt;br&gt;
-            1) &quot;lisi&quot;&lt;br&gt;
-            2) &quot;zhangsan&quot;&lt;br&gt;
-            3) &quot;wangwu&quot;&lt;br&gt;
-
-            127.0.0.1:6379&gt; zrange mysort 0 -1 withscores&lt;br&gt;
-            1) &quot;zhangsan&quot;&lt;br&gt;
-            2) &quot;60&quot;&lt;br&gt;
-            3) &quot;wangwu&quot;&lt;br&gt;
-            4) &quot;80&quot;&lt;br&gt;
-            5) &quot;lisi&quot;&lt;br&gt;
-            6) &quot;500&quot;&lt;br&gt;
-        3. 删除：zrem key value&lt;br&gt;
-        &amp;emsp;&amp;emsp;127.0.0.1:6379&gt; zrem mysort lisi&lt;br&gt;
-        &amp;emsp;&amp;emsp;(integer) 1&lt;br&gt;
-
-    7. 通用命令
-        1. keys * : 查询所有的键
-        2. type key ： 获取键对应的value的类型
-        3. del key：删除指定的key value
-
-
-4. 持久化
-    1. redis是一个内存数据库，当redis服务器重启，获取电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。
-    2. redis持久化机制：
-        1. RDB：默认方式，不需要进行配置，默认就使用这种机制
-            * 在一定的间隔时间中，检测key的变化情况，然后持久化数据
-            1. 编辑redis.windwos.conf文件
-                #after 900 sec (15 min) if at least 1 key &lt;br&gt;
-                （在900秒后，至少有1个key发生改变就持久化一次）&lt;br&gt;
-                changed&lt;br&gt;
-                save 900 1&lt;br&gt;
-                #after 300 sec (5 min) if at least 10 keys （在300秒后，至少有5个key发生改变就持久化一次）&lt;br&gt;changed&lt;br&gt;
-                save 300 10&lt;br&gt;
-                #after 60 sec if at least 10000 keys changed&lt;br&gt;（在60秒后，至少有10000个key发生改变就持久化一次）&lt;br&gt;
-                save 60 10000&lt;br&gt;
-
-            2. 重新启动redis服务器，并指定配置文件名称
-                D:\JavaWeb2018\day23_redis\资料\redis\windows-64\redis-2.8.9&gt;redis-server.exe redis.windows.conf    
-
-        2. AOF：日志记录的方式，可以记录每一条命令的操作。可以每一次命令操作后，持久化数据
-            1. 编辑redis.windwos.conf文件
-                appendonly no（关闭aof） --&gt; appendonly yes （开启aof）
-
-                #appendfsync always ： 每一次操作都进行持久化&lt;br&gt;
-                appendfsync everysec ： 每隔一秒进行一次持久化&lt;br&gt;
-                #appendfsync no     ： 不进行持久化&lt;br&gt;</code></pre>
       
 
       
@@ -603,15 +602,55 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">DQL语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Mysql_三范式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">约束</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">视图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">索引</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +666,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,7 +682,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
               </li>
             
             <div class="clearfix"></div>

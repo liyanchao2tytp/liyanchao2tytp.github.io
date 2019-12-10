@@ -17,7 +17,7 @@
 <meta property="og:description" content="AJAX局部刷新 提高用户体验必备技术首先我们要知道，AJAX并不是一门技术，他的全称是Asynchronous Javascript And XML，是多项技术合并的简称。其实我们生活中有很多网页和软件就用到了AJAX，只是我们没有注意，但是他们确实提高了我们的用户体验。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;QtksRP.md.jpg">
-<meta property="og:updated_time" content="2019-12-07T05:22:02.660Z">
+<meta property="og:updated_time" content="2019-12-10T10:03:41.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;QtksRP.md.jpg">
   
@@ -215,102 +215,16 @@
 
 <h4 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h4><div class="test">XMLHttpRequest对象允许Web程序员从Web服务器以后台活动的方式获取数据。数据格式通常是XML，但是也可以很好的支持任何基于文本的数据格式（XMLHttpRequest这个名字取得是在是很不恰当）。尽管XMLHttpRequest对于完成这件工作来说最为灵活和通用的工具，但还有其他方法也可以从服务器获取数据。</div>
 
-<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<pre><code>function 方法名(){
-
-// 1、创建AJAX核心对象XMLHttoRequest，这个对象可以启动一个线程和服务器交互，代替UI线程
-var xhr;
-if(window.XMLHttpRequest){//多数游览器都内置该对象
-    xhr = new XMLHttpRequest();
-else if(window.ActiveXObject){//IE5、IE6内置对象是ActiveXObject
-    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-}
-// 2、注册回调函数
-xhr = onreadystatechange = function(参数1){
-     if ( xhr.readyState == 4 ）{
-         //接受服务器响应完毕
-       if( xhr.status == 200 ) {    //响应正常结束
-          //设置局部刷新的内容
-（重点:如何接受服务器相应的文本内容 XMLHttpRequest对象的respnseText或是responseXML方法 能接收servlet里response。getWriter().print(&quot;&quot;)里面返回的内容）
-          document.getElementById(&quot;&quot;).innerHTML = xhr.responseText;
-       }else if( xhr.status == 404 ){
-           alert(&quot;404-Not Found&quot;);
-       }else if( xhr.status == 500 ){
-           alert(&quot;500-Server Inner Error&quot;);
-       }else {
-           alert( xhr.status+&quot;-未知错误&quot;);
-       }
-
-     } 
-};
-// 3、开通通道，但不发送请求
-/**
-*   open(method,url,async,username,password)
-*   method:     请求方法(GET/POST/PUT/DELECT)
-*   url:        统一资源定位符
-*   async:      指定支持异步还是同步机制(true:异步，false:同步)
-*
-**/
-
-/*
-    get请求会有缓存问题:对于相同的输入只会提交一次
-    解决方法： 加入时间戳使得每次发送的参数都不同
-*/
-var timeStamp = new Date().getTime();
-xhr.open(&quot;GET&quot;,&quot;/请求地址?参数名=&quot;+参数1&amp;_=timeStamp,&quot;true&quot;);
-// 4、发送请求
-//send(body) send里面放的是请求体，由于get方法没有请求体，所以不需要
-xhr.send();
-
-}
-}</code></pre><p>上面的请求方式是get请求，如果换成post请求，则后两段代码为</p>
-<pre><code>//注册回调函数
-xhr.onreadystatechange = callback;
-//打开通道
-xhr.open(&quot;POST&quot;,&quot;请求路径&quot;,&quot;true&quot;);
-//只有表单才能提交POST请求，所以必须设置请求头内容类型（模拟表单提交数据）
-xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded;charset=UTF-8&quot;); 
-//不需要记第二个参数，创建一个form表单，enctype属性默认值
-
-//发送请求(请求体)
-xhr.send(&quot;参数名=&quot;+参数);   //字符串拼接
-
-function callback(){
-    //回调函数 同上面get请求
-}</code></pre><p>写完这些之后，就要创建请求路径对应的servlet，在web.xml文件中配置serlvet,servlet-mapping中的请求地址就是我们在上面写的请求路径 </p>
-<pre><code>//其中注册回调函数还有多种种方式
-
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;注册句柄方式&lt;/title&gt;
-    &lt;script&gt;
-        function sayHello(){
-            alert(&quot;Hello World&quot;);
-        }
-
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;!-- 给按钮注册事件句柄onclick的第一种方式，最常用的方式，直接在标签中编写onclick属性即可 --&gt;
-    &lt;!-- 注册的过程不会执行，只有注册成功了，并且发生了特殊的时间被注册的js代码才会执行 --&gt;
-    &lt;input type=&quot;button&quot; value=&quot;点击按钮&quot; onclick=&quot;sayHello()&quot;/&gt;
-    &lt;br&gt;
-    &lt;br&gt;
-
-    &lt;input type=&quot;button&quot; value=&quot;点击按钮&quot; id=&quot;myButton&quot;/&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;script&gt;
-    //给按钮注册onclick事件句柄的第二种方式，使用js代码
-    var myButton = document.getElementById(&quot;myButton&quot;);
-    //注册的时候不会执行js代码，只是注册，当发生特殊事件之后被注册的js代码才会执行
-    myButton.onclick = function(){
-        alert(&quot;Hello Kitty&quot;);
-    };
-
-&lt;/script&gt;</code></pre>
+<ul>
+<li>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> 方法名(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line"> <span class="number">1</span>、创建AJAX核心对象XMLHttoRequest，这个对象可以启动一个线程和服务器交互，代替UI线程</span><br><span class="line">    <span class="keyword">var</span> xhr;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;<span class="comment">//多数游览器都内置该对象</span></span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject)&#123;<span class="comment">//IE5、IE6内置对象是ActiveXObject</span></span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、注册回调函数</span><br><span class="line">    xhr = onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params">参数<span class="number">1</span></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span> ( xhr.readyState == <span class="number">4</span> ）&#123;</span><br><span class="line">             <span class="comment">//接受服务器响应完毕</span></span><br><span class="line">           <span class="keyword">if</span>( xhr.status == <span class="number">200</span> ) &#123;    <span class="comment">//响应正常结束</span></span><br><span class="line">              <span class="comment">//设置局部刷新的内容</span></span><br><span class="line">    （重点:如何接受服务器相应的文本内容 XMLHttpRequest对象的respnseText或是responseXML方法 能接收servlet里response。getWriter().print(<span class="string">""</span>)里面返回的内容）</span><br><span class="line">              <span class="built_in">document</span>.getElementById(<span class="string">""</span>).innerHTML = xhr.responseText;</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span>( xhr.status == <span class="number">404</span> )&#123;</span><br><span class="line">               alert(<span class="string">"404-Not Found"</span>);</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span>( xhr.status == <span class="number">500</span> )&#123;</span><br><span class="line">               alert(<span class="string">"500-Server Inner Error"</span>);</span><br><span class="line">           &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">               alert( xhr.status+<span class="string">"-未知错误"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">             </span><br><span class="line">         &#125; </span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line"> <span class="number">3</span>、开通通道，但不发送请求</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    *   open(method,url,async,username,password)</span></span><br><span class="line"><span class="comment">    *   method:     请求方法(GET/POST/PUT/DELECT)</span></span><br><span class="line"><span class="comment">    *   url:        统一资源定位符</span></span><br><span class="line"><span class="comment">    *   async:      指定支持异步还是同步机制(true:异步，false:同步)</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        get请求会有缓存问题:对于相同的输入只会提交一次</span></span><br><span class="line"><span class="comment">        解决方法： 加入时间戳使得每次发送的参数都不同</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">var</span> timeStamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    xhr.open(<span class="string">"GET"</span>,<span class="string">"/请求地址?参数名="</span>+参数<span class="number">1</span>&amp;_=timeStamp,<span class="string">"true"</span>);</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、发送请求</span><br><span class="line">    <span class="comment">//send(body) send里面放的是请求体，由于get方法没有请求体，所以不需要</span></span><br><span class="line">    xhr.send();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面的请求方式是get请求，如果换成post请求，则后两段代码为<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册回调函数</span></span><br><span class="line">xhr.onreadystatechange = callback;</span><br><span class="line"><span class="comment">//打开通道</span></span><br><span class="line">xhr.open(<span class="string">"POST"</span>,<span class="string">"请求路径"</span>,<span class="string">"true"</span>);</span><br><span class="line"><span class="comment">//只有表单才能提交POST请求，所以必须设置请求头内容类型（模拟表单提交数据）</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>); </span><br><span class="line"><span class="comment">//不需要记第二个参数，创建一个form表单，enctype属性默认值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//发送请求(请求体)</span></span><br><span class="line">xhr.send(<span class="string">"参数名="</span>+参数);   <span class="comment">//字符串拼接</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//回调函数 同上面get请求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>写完这些之后，就要创建请求路径对应的servlet</li>
+<li>在web.xml文件中配置serlvet,servlet-mapping中的请求地址就是我们在上面写的请求路径 </li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">   //其中注册回调函数还有多种种方式</span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>注册句柄方式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">		<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">			alert(<span class="string">"Hello World"</span>);</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 给按钮注册事件句柄onclick的第一种方式，最常用的方式，直接在标签中编写onclick属性即可 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 注册的过程不会执行，只有注册成功了，并且发生了特殊的时间被注册的js代码才会执行 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"点击按钮"</span> <span class="attr">onclick</span>=<span class="string">"sayHello()"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"点击按钮"</span> <span class="attr">id</span>=<span class="string">"myButton"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">       <span class="comment">//给按钮注册onclick事件句柄的第二种方式，使用js代码</span></span></span><br><span class="line"><span class="javascript">       <span class="keyword">var</span> myButton = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</span></span><br><span class="line"><span class="actionscript">       <span class="comment">//注册的时候不会执行js代码，只是注册，当发生特殊事件之后被注册的js代码才会执行</span></span></span><br><span class="line"><span class="actionscript">       myButton.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">           alert(<span class="string">"Hello Kitty"</span>);</span></span><br><span class="line">       &#125;;</span><br><span class="line">       </span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -590,15 +504,55 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">DQL语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Mysql_三范式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">约束</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">视图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">索引</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,11 +568,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,7 +584,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
               </li>
             
             <div class="clearfix"></div>

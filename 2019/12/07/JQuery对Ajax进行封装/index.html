@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="博客">
 <meta property="og:description" content="JQuery的$.ajax和$.get()&#x2F;$.post()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-07T05:31:59.182Z">
+<meta property="og:updated_time" content="2019-12-10T10:03:13.342Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -208,104 +208,14 @@
                         <br>
                         可以让开发人员专注【局部刷新函数的实现】</div>
 
-<h2 id="ajax-是jquery-为-ajax-开发提供的标准简化版"><a href="#ajax-是jquery-为-ajax-开发提供的标准简化版" class="headerlink" title="$.ajax() : 是jquery 为 ajax 开发提供的标准简化版 "></a>$.ajax() : 是jquery 为 ajax 开发提供的标准简化版 <br></h2><pre><code>1. ajax() 只接受一个json对象作为参数 &lt;br&gt; 
-        开发人员可以将AJAX实现需要的参数在json对象中进行声明
+<h2 id="ajax-是jquery-为-ajax-开发提供的标准简化版"><a href="#ajax-是jquery-为-ajax-开发提供的标准简化版" class="headerlink" title="$.ajax() : 是jquery 为 ajax 开发提供的标准简化版 "></a>$.ajax() : 是jquery 为 ajax 开发提供的标准简化版 <br></h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> ajax() 只接受一个json对象作为参数 &lt;br&gt; </span><br><span class="line">        开发人员可以将AJAX实现需要的参数在json对象中进行声明</span><br><span class="line">  </span><br><span class="line"><span class="number">2.</span> <span class="keyword">var</span> option=(</span><br><span class="line"></span><br><span class="line">        type:</span><br><span class="line">                [<span class="meta">作用</span>]: 通知异步请求对象采用何种方式发送请求协议包（post/<span class="keyword">get</span>）</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                        type:<span class="string">'get'</span> , type:<span class="string">'post'</span></span><br><span class="line">                [<span class="meta">注意</span>]: type属性可以不声明，此时异步请求对象使用GET方式发送请求包</span><br><span class="line">        url:</span><br><span class="line">                [<span class="meta">作用</span>]: 本次要访问资源文件地址，要求异步请求对象将这个地址</span><br><span class="line">                        写入到请求协议包中的请求行上</span><br><span class="line">                [<span class="meta">赋值</span>]:   url:<span class="string">'/my/Web/one.do'</span>,url:<span class="string">'/myWeb/emo/check.do'</span></span><br><span class="line">                [<span class="meta">注意</span>]:  url属性不能省略，url属性不能携带请求参数</span><br><span class="line">        data:</span><br><span class="line">                [<span class="meta">作用</span>]: 通知异步请求对象本次携带的请求参数</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                            data属性可以接收【以字符串形式拼接的参数】</span><br><span class="line">                            data:<span class="string">"uname=mike&amp;password=123"</span></span><br><span class="line">                            data属性可以接收【json格式描述的参数】</span><br><span class="line">                            data:&#123;</span><br><span class="line">                                    <span class="string">"uname"</span>:<span class="string">"mike"</span>,</span><br><span class="line">                                    <span class="string">"password"</span>:<span class="string">"123"</span></span><br><span class="line">                            &#125;</span><br><span class="line">                [<span class="meta">属性</span>]; 如果没有需要携带发送的请求参数，可以不声明data</span><br><span class="line">                [<span class="meta">注意</span>]:  虽然可以接受两种赋值方式，但是不能混着使用</span><br><span class="line">                            如果发送的请求参数较少时，使用字符串拼接</span><br><span class="line">                                发送的请求参数较多时，使用json格式不容易出错</span><br><span class="line"></span><br><span class="line">        <span class="keyword">async</span>:</span><br><span class="line">                [<span class="meta">作用</span>]: 设置同步请求与异步请求，简单来说通知游览器</span><br><span class="line">                        在当前异步请求对象工作期间，游览器是否可以</span><br><span class="line">                        委托其他的异步请求对象发送其他的请求</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                        <span class="keyword">async</span>: <span class="literal">true</span>     异步请求</span><br><span class="line">                        <span class="keyword">async</span>: <span class="literal">false</span>    同步请求</span><br><span class="line">                [<span class="meta">注意</span>]: 绝大多数情况下，都是使用异步请求，此时这个属性可以不用声明</span><br><span class="line"></span><br><span class="line">        success:</span><br><span class="line">                [<span class="meta">作用</span>]: 指定异步请求对象工作完毕后，需要调用的【局部刷新函数名】</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                        success:函数名</span><br><span class="line">                [<span class="meta">注意</span>]: 只写局部刷新的函数名字，不要带括号</span><br><span class="line">                        success不能省略的</span><br><span class="line"></span><br><span class="line">        error:</span><br><span class="line">                [<span class="meta">作用</span>]: 通知异步请求对象在接收到【<span class="number">404</span>，<span class="number">405</span>，<span class="number">500</span>】等状态码后，需要调用的方法名</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                        error:errorFun</span><br><span class="line">                [<span class="meta">注意</span>]: 开发测试时会写，上线后就不需要写了。</span><br><span class="line"></span><br><span class="line">        dataType:</span><br><span class="line">                [<span class="meta">作用</span>]: 通知jquery，将异步对象中读取数据转变为何种数据类型</span><br><span class="line">                [<span class="meta">赋值</span>]:</span><br><span class="line">                        dataType:<span class="string">'text'</span>, 通知jquery，将异步请求对象中读取的数据转变为字符串</span><br><span class="line">                        dataType:<span class="string">'json'</span>, 通知jquery，将异步请求对象中读取的数据，</span><br><span class="line">                                        通过eval函数转换为json对象</span><br><span class="line">                [<span class="meta">注意</span>]: 可以不声明，默认将异步请求对象取得内容作为一个字符输入到局部刷新函数中</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p><font size="4px">例如</font></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//使用$.ajax()发送异步请求</span></span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">"ajaxServlet"</span>,  <span class="comment">//请求路径</span></span><br><span class="line">        type:<span class="string">"POST"</span>,    <span class="comment">//请求方式</span></span><br><span class="line">        <span class="comment">//data:"username":"jack","age":"23" //请求参数</span></span><br><span class="line">        data:&#123;<span class="string">"username"</span>:<span class="string">"jack"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>&#125;,</span><br><span class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            alert(data);</span><br><span class="line">        &#125;,  <span class="comment">//相应成功后的回调函数</span></span><br><span class="line">        error:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"出错了。。。。"</span>);</span><br><span class="line">        &#125;,  <span class="comment">//表示如果请求响应出现错误，会执行回调函数</span></span><br><span class="line">        dataType:<span class="string">"Text"</span> <span class="comment">//设置接收到的响应数据的格式</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-2. var option=(
+<h2 id="究极无敌简化版-开发使用的版本"><a href="#究极无敌简化版-开发使用的版本" class="headerlink" title="究极无敌简化版 开发使用的版本"></a>究极无敌简化版 开发使用的版本</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    $.<span class="keyword">get</span>() 与 $.post()</span><br><span class="line">        <span class="number">1</span>、【介绍】：</span><br><span class="line">                    $.<span class="keyword">get</span>(请求地址,请求参数,局部刷新函数名,需要的数据类型【text/json】)</span><br><span class="line"></span><br><span class="line">                    如果只需要得到字符串类型数据就可以</span><br><span class="line">                    $.<span class="keyword">get</span>(请求地址,请求参数,局部刷新函数名)</span><br><span class="line"></span><br><span class="line">                    如果只需要得到字符串类型数据，同时没有需要携带的请求参数</span><br><span class="line">                    $.<span class="keyword">get</span>(请求地址,局部刷新函数名)</span><br><span class="line"></span><br><span class="line">&lt;font size=<span class="string">"4px"</span>&gt;例如&lt;/font&gt;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//定义方法</span></span><br><span class="line">    function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $.<span class="keyword">get</span>(<span class="string">"ajaxServlet"</span>,&#123;username:<span class="string">"rose"</span>&#125;,function(<span class="keyword">data</span>)&#123;</span><br><span class="line">            alert(<span class="keyword">data</span>);</span><br><span class="line">        &#125;,<span class="string">"text"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $.post(<span class="string">"ajaxServlet"</span>,&#123;username:<span class="string">"rose"</span>&#125;,function(<span class="keyword">data</span>)&#123;</span><br><span class="line">            alert(<span class="keyword">data</span>);</span><br><span class="line">        &#125;,<span class="string">"text"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-        type:
-                [作用]: 通知异步请求对象采用何种方式发送请求协议包（post/get）
-                [赋值]:
-                        type:&apos;get&apos; , type:&apos;post&apos;
-                [注意]: type属性可以不声明，此时异步请求对象使用GET方式发送请求包
-        url:
-                [作用]: 本次要访问资源文件地址，要求异步请求对象将这个地址
-                        写入到请求协议包中的请求行上
-                [赋值]:   url:&apos;/my/Web/one.do&apos;,url:&apos;/myWeb/emo/check.do&apos;
-                [注意]:  url属性不能省略，url属性不能携带请求参数
-        data:
-                [作用]: 通知异步请求对象本次携带的请求参数
-                [赋值]:
-                            data属性可以接收【以字符串形式拼接的参数】
-                            data:&quot;uname=mike&amp;password=123&quot;
-                            data属性可以接收【json格式描述的参数】
-                            data:{
-                                    &quot;uname&quot;:&quot;mike&quot;,
-                                    &quot;password&quot;:&quot;123&quot;
-                            }
-                [属性]; 如果没有需要携带发送的请求参数，可以不声明data
-                [注意]:  虽然可以接受两种赋值方式，但是不能混着使用
-                            如果发送的请求参数较少时，使用字符串拼接
-                                发送的请求参数较多时，使用json格式不容易出错
 
-        async:
-                [作用]: 设置同步请求与异步请求，简单来说通知游览器
-                        在当前异步请求对象工作期间，游览器是否可以
-                        委托其他的异步请求对象发送其他的请求
-                [赋值]:
-                        async: true     异步请求
-                        async: false    同步请求
-                [注意]: 绝大多数情况下，都是使用异步请求，此时这个属性可以不用声明
 
-        success:
-                [作用]: 指定异步请求对象工作完毕后，需要调用的【局部刷新函数名】
-                [赋值]:
-                        success:函数名
-                [注意]: 只写局部刷新的函数名字，不要带括号
-                        success不能省略的
-
-        error:
-                [作用]: 通知异步请求对象在接收到【404，405，500】等状态码后，需要调用的方法名
-                [赋值]:
-                        error:errorFun
-                [注意]: 开发测试时会写，上线后就不需要写了。
-
-        dataType:
-                [作用]: 通知jquery，将异步对象中读取数据转变为何种数据类型
-                [赋值]:
-                        dataType:&apos;text&apos;, 通知jquery，将异步请求对象中读取的数据转变为字符串
-                        dataType:&apos;json&apos;, 通知jquery，将异步请求对象中读取的数据，
-                                        通过eval函数转换为json对象
-                [注意]: 可以不声明，默认将异步请求对象取得内容作为一个字符输入到局部刷新函数中
-    )</code></pre><p><font size="4px">例如</font></p>
-<pre><code>//定义函数
-function fun(){
-    //使用$.ajax()发送异步请求
-    $.ajax({
-        url:&quot;ajaxServlet&quot;,  //请求路径
-        type:&quot;POST&quot;,    //请求方式
-        //data:&quot;username&quot;:&quot;jack&quot;,&quot;age&quot;:&quot;23&quot; //请求参数
-        data:{&quot;username&quot;:&quot;jack&quot;,&quot;age&quot;:&quot;23&quot;},
-        success:function(data){
-            alert(data);
-        },  //相应成功后的回调函数
-        error:function(){
-            alert(&quot;出错了。。。。&quot;);
-        },  //表示如果请求响应出现错误，会执行回调函数
-        dataType:&quot;Text&quot; //设置接收到的响应数据的格式
-    });
-
-}</code></pre><h2 id="究极无敌简化版-开发使用的版本"><a href="#究极无敌简化版-开发使用的版本" class="headerlink" title="究极无敌简化版 开发使用的版本"></a>究极无敌简化版 开发使用的版本</h2><pre><code>$.get() 与 $.post()
-    1、【介绍】：
-                $.get(请求地址,请求参数,局部刷新函数名,需要的数据类型【text/json】)
-
-                如果只需要得到字符串类型数据就可以
-                $.get(请求地址,请求参数,局部刷新函数名)
-
-                如果只需要得到字符串类型数据，同时没有需要携带的请求参数
-                $.get(请求地址,局部刷新函数名)</code></pre><p><font size="4px">例如</font></p>
-<pre><code>//定义方法
-function fun(){
-    $.get(&quot;ajaxServlet&quot;,{username:&quot;rose&quot;},function(data){
-        alert(data);
-    },&quot;text&quot;);
-}
-
-function fun(){
-    $.post(&quot;ajaxServlet&quot;,{username:&quot;rose&quot;},function(data){
-        alert(data);
-    },&quot;text&quot;);
-}</code></pre>
       
 
       
@@ -589,15 +499,55 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">DQL语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Mysql_三范式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">约束</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">视图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">索引</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +563,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,7 +579,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
               </li>
             
             <div class="clearfix"></div>
