@@ -8,13 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MyBatis深入浅出（三） | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="keywords" content="各种标签">
+<meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis深入浅出（三）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%89%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-08T11:00:09.392Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;Q6HRx0.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;Q6XZ1s.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;Q6vpo8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;Q6vKFU.png">
+<meta property="og:updated_time" content="2019-12-12T12:53:11.218Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -192,7 +199,51 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><img src="https://s2.ax1x.com/2019/12/08/QaRHEj.jpg" alt="Mybatis"></p>
+<a id="more"></a>
+<h2 id="SqlMapConfig中configuration的子标签"><a href="#SqlMapConfig中configuration的子标签" class="headerlink" title="SqlMapConfig中configuration的子标签"></a>SqlMapConfig中configuration的子标签</h2><h3 id="properties-标签"><a href="#properties-标签" class="headerlink" title="properties 标签"></a>properties 标签</h3><ul>
+<li><p>之前我们在environments标签中配置了连接数据库的各种属性值</p>
+<ul>
+<li>例如driver、url、用户名、密码</li>
+</ul>
+</li>
+<li><p>我们也可以将其内容配置在configuarion的peoperties子标签中</p>
+<p><img src="https://s2.ax1x.com/2019/12/12/Q6HRx0.png" alt=""></p>
+</li>
+<li><p>可以通过${}来取key所对应的value</p>
+<h4 id="目的：可以通过属性引用外部配置文件"><a href="#目的：可以通过属性引用外部配置文件" class="headerlink" title="目的：可以通过属性引用外部配置文件"></a>目的：可以通过属性引用外部配置文件</h4><p><img src="https://s2.ax1x.com/2019/12/12/Q6XZ1s.png" alt=""></p>
+</li>
+</ul>
+<h3 id="typeAliases-标签（配置pojo类别名）"><a href="#typeAliases-标签（配置pojo类别名）" class="headerlink" title="typeAliases 标签（配置pojo类别名）"></a>typeAliases 标签（配置pojo类别名）</h3><h4 id="用于配置类的别名（使不需要每次都写全限定类名）"><a href="#用于配置类的别名（使不需要每次都写全限定类名）" class="headerlink" title="用于配置类的别名（使不需要每次都写全限定类名）"></a>用于配置类的别名（使不需要每次都写全限定类名）</h4><ul>
+<li>我们在一些标签的parameterType里面写一些简单类型时，<ul>
+<li>既可以使用java.lang.Integer</li>
+<li>也可以使用int或是INT</li>
+<li>也可以用Integer</li>
+</ul>
+</li>
+<li>原因 ：配置了别名</li>
+</ul>
+<p>因此我们也可以给类配置别名，使用typeAliases标签</p>
+<ul>
+<li>typeAliases标签只能配置domain（model）中类的别名</li>
+<li>他的子标签typeAlias用于配置别名<ul>
+<li>type：指定的是实体类的全限定类名</li>
+<li>alias：指定别名</li>
+</ul>
+</li>
+<li>注意： 指定别名后，别名就不区分大小写。<h4 id="typeAliases子标签-：package标签（指定配置别名的包）"><a href="#typeAliases子标签-：package标签（指定配置别名的包）" class="headerlink" title="typeAliases子标签 ：package标签（指定配置别名的包）"></a>typeAliases子标签 ：package标签（指定配置别名的包）</h4></li>
+<li>用于指定配置别名的包，当指定后，该包下的实体类都会注册别名，并且类名就是别名。</li>
+<li>同样别名不区分大小写<br><img src="https://s2.ax1x.com/2019/12/12/Q6vpo8.png" alt=""></li>
+</ul>
+<h4 id="mappers子标签：package标签（指定dao接口所在的包）"><a href="#mappers子标签：package标签（指定dao接口所在的包）" class="headerlink" title="mappers子标签：package标签（指定dao接口所在的包）"></a>mappers子标签：package标签（指定dao接口所在的包）</h4><ul>
+<li>同样在mappers标签中同样有个package子标签，子作用是为了指定dao接口所在的包</li>
+<li>当指定了dao接口所在的包之后，就不需要再写mapper/resource/class了<br><img src="https://s2.ax1x.com/2019/12/12/Q6vKFU.png" alt=""></li>
+</ul>
+<h4 id="两个package子标签的区别"><a href="#两个package子标签的区别" class="headerlink" title="两个package子标签的区别"></a>两个package子标签的区别</h4><ul>
+<li>typeAliases中的package是为了指明pojo对象所在的包</li>
+<li>mappers中的package是为了指明dao接口所在的包</li>
+</ul>
+
       
 
       
@@ -204,7 +255,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">各种标签</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SSM//" class="article-tag-list-link color4">SSM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -306,7 +379,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SqlMapConfig中configuration的子标签"><span class="toc-number">1.</span> <span class="toc-text">SqlMapConfig中configuration的子标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#properties-标签"><span class="toc-number">1.1.</span> <span class="toc-text">properties 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#目的：可以通过属性引用外部配置文件"><span class="toc-number">1.1.1.</span> <span class="toc-text">目的：可以通过属性引用外部配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typeAliases-标签（配置pojo类别名）"><span class="toc-number">1.2.</span> <span class="toc-text">typeAliases 标签（配置pojo类别名）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用于配置类的别名（使不需要每次都写全限定类名）"><span class="toc-number">1.2.1.</span> <span class="toc-text">用于配置类的别名（使不需要每次都写全限定类名）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typeAliases子标签-：package标签（指定配置别名的包）"><span class="toc-number">1.2.2.</span> <span class="toc-text">typeAliases子标签 ：package标签（指定配置别名的包）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mappers子标签：package标签（指定dao接口所在的包）"><span class="toc-number">1.2.3.</span> <span class="toc-text">mappers子标签：package标签（指定dao接口所在的包）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两个package子标签的区别"><span class="toc-number">1.2.4.</span> <span class="toc-text">两个package子标签的区别</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -450,6 +523,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
               </li>
              
@@ -458,15 +535,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Junit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">反射</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">各种标签</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,27 +587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Junit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">反射</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">注解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
               </li>
             
             <div class="clearfix"></div>
