@@ -188,7 +188,44 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><hr>
+<p>在一对一中从表的实体类和主表的实体类要体现出对应的关系。<br><br>即：在从表的实体类中创建一个主表实体类的对象引用，并生成get/set方法。</p>
+<center><img src="https://s2.ax1x.com/2019/12/30/lQn1vn.png" alt="lQn1vn.png" border="0" /></center>
+
+<p>我们在封装Account的时候，同时想将User对象也封装进去。<br><br>为了实现这个功能，</p>
+<ul>
+<li>我们在dao对应的配置文件的mapper子标签中，定义封装account和user的resultMap. <a id="1">&nbsp;</a><ul>
+<li>id属性为唯一标识，type属性为返回类型account</li>
+<li>子标签 id为主键，property属性为实体类属性名，column为字段名</li>
+<li>子标签 result为非主键，property和column同上。</li>
+</ul>
+</li>
+</ul>
+<br>
+此时我们只将account的属性封装进去，并没有将user封装进去。
+<br>
+需要在resultMap子标签中定义一对一的关系映射，封装user的内容。
+
+<ul>
+<li>子标签association 的property属性值为主表实体类信息</li>
+<li>column属性为用的那个字段获取</li>
+<li><font color="greblue">javaType属性为封装到那个对象，通常使用全限定类名com.lyc.domain.User，但是由于我们定义了别名，可以直接使用user</font><ul>
+<li>assocation的子标签id与result <a href="#1">同上</a></li>
+</ul>
+</li>
+</ul>
+<center>
+<img src="https://s2.ax1x.com/2019/12/30/lQLeIS.png" alt="lQLeIS.png" border="0" />
+</center>
+
+<p>最后将配置findAll方法标签中的resultType换成resultMap，属性值为刚才定义的resultMap标签的id值。</p>
+<center><img src="https://s2.ax1x.com/2019/12/30/lQXkAf.png" alt="lQXkAf.png" border="0" /></center>
+
+
+<h3 id="多对一"><a href="#多对一" class="headerlink" title="多对一"></a>多对一</h3><hr>
+<h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><hr>
+<h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><hr>
+
       
 
       
@@ -200,7 +237,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">多表查询</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SSM//" class="article-tag-list-link color4">SSM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -1377,19 +1440,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Junit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">反射</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">注解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">各种标签</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,7 +1448,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,11 +1460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">多表查询</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">各种标签</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1422,14 +1473,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">连接查询、例题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">DQL语句</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,15 +1496,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">CRUD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">DQL语句</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">radis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Junit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">反射</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">科普</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
               </li>
              
               <li class="article-tag-list-item">
