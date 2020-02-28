@@ -8,20 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MyBatis深入浅出（五） | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一对一 在一对一中从表的实体类和主表的实体类要体现出对应的关系。即：在从表的实体类中创建一个主表实体类的对象引用，并生成get&#x2F;set方法。   我们在封装Account的时候，同时想将User对象也封装进去。为了实现这个功能，  我们在dao对应的配置文件的mapper子标签中，定义封装account和user的resultMap. &amp;nbsp; id属性为唯一标识，type属性为返回类型acc">
-<meta name="keywords" content="Mybatis,多表查询">
+  <meta name="keywords" content="Mybatis,多表查询,JNDI补充">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis深入浅出（五）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%BA%94%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="一对一 在一对一中从表的实体类和主表的实体类要体现出对应的关系。即：在从表的实体类中创建一个主表实体类的对象引用，并生成get&#x2F;set方法。   我们在封装Account的时候，同时想将User对象也封装进去。为了实现这个功能，  我们在dao对应的配置文件的mapper子标签中，定义封装account和user的resultMap. &amp;nbsp; id属性为唯一标识，type属性为返回类型acc">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;lQn1vn.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;lQLeIS.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;lQXkAf.png">
-<meta property="og:updated_time" content="2019-12-30T13:06:38.102Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;l1RNng.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;l1ohLV.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;lGNNa8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;lGNhRJ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;lG6GEd.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;lG4P0K.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;lG5Wxs.png">
+<meta property="og:updated_time" content="2020-01-03T12:30:17.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;lQn1vn.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -199,9 +205,27 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><hr>
+        <p><img src="https://s2.ax1x.com/2019/12/08/QaRHEj.jpg" alt="Mybatis"></p>
+<a id="more"></a>
+
+<h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><hr>
+<p>示例：用户和账户<br><br> &emsp;&emsp;&emsp;&emsp;一个用户可以有多个账户<br><br> &emsp;&emsp;&emsp;&emsp;一个账户只能属于一个用户（多个账户也可以属于同一个用户）<br><br> 步骤：</p>
+<ul>
+<li>建立两张表，用户表和账户表，user表和account表 </li>
+<li>建立两个实体类，用户实体类和账户实体类User和Account</li>
+<li>建立两个配置文件<ul>
+<li>用户的配置文件和账户的配置文件</li>
+</ul>
+</li>
+<li>实现配置：<ul>
+<li>当我们查询用户时，可以同时得到用户下所包含的账户信息（多对一）</li>
+<li>当我们查询账户是，可以同时得到账户的所属用户信息（一对一）</li>
+</ul>
+</li>
+</ul>
 <p>在一对一中从表的实体类和主表的实体类要体现出对应的关系。<br><br>即：在从表的实体类中创建一个主表实体类的对象引用，并生成get/set方法。</p>
-<center><img src="https://s2.ax1x.com/2019/12/30/lQn1vn.png" alt="lQn1vn.png" border="0" /></center>
+<img src="https://s2.ax1x.com/2019/12/30/lQn1vn.png" alt="lQn1vn.png" border="0" />
+
 
 <p>我们在封装Account的时候，同时想将User对象也封装进去。<br><br>为了实现这个功能，</p>
 <ul>
@@ -225,17 +249,90 @@
 </ul>
 </li>
 </ul>
-<center>
 <img src="https://s2.ax1x.com/2019/12/30/lQLeIS.png" alt="lQLeIS.png" border="0" />
-</center>
 
 <p>最后将配置findAll方法标签中的resultType换成resultMap，属性值为刚才定义的resultMap标签的id值。</p>
-<center><img src="https://s2.ax1x.com/2019/12/30/lQXkAf.png" alt="lQXkAf.png" border="0" /></center>
-
+<img src="https://s2.ax1x.com/2019/12/30/lQXkAf.png" alt="lQXkAf.png" border="0" />
 
 <h3 id="多对一"><a href="#多对一" class="headerlink" title="多对一"></a>多对一</h3><hr>
+<p>对于mybatis来说，一对一与多对一都是一个一对一的过程。按照一对一的过程来就可以。</p>
 <h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><hr>
+<p>一对多操作时，主表实体类需要加上一对多的关系映射，也就是主表实体类应该包含从表实体类的集合引用。并生成其get/set方法。</p>
+<img src="https://s2.ax1x.com/2019/12/31/l1RNng.png" alt="l1RNng.png" border="0" />
+
+<p>然后要在其对应的配置文件中，创建对应的select标签，同样使用resultMap属性。<br><br></p>
+<p>创建user和account的resultMap标签，基本与一对一创建的resultMap相同。</p>
+<ul>
+<li>但是在resultMap中配置user对象的accounts集合映射时，使用的不再是association，而是collecation子标签，property属性和ofType属性<ul>
+<li>ofType属性值为集合中元素的类型，account，如果没有定义别名的话就要写全限定类名。</li>
+</ul>
+</li>
+</ul>
+<img src="https://s2.ax1x.com/2019/12/31/l1ohLV.png" alt="l1ohLV.png" border="0" />
+
+
+
+
 <h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><hr>
+<p>示例：用户和角色<br><br>&emsp;&emsp;&emsp;&emsp;一个用户可以有多个角色<br><br>&emsp;&emsp;&emsp;&emsp;一个角色可以赋予多个用户<br><br>步骤：</p>
+<ol>
+<li>建立两张表，用户表和角色表<ul>
+<li>让用户表和角色表具有多对多的关系。需要使用中间表</li>
+<li>中间表中包含用户表和角色表的主键，在中间表中时外键</li>
+</ul>
+</li>
+<li>建立两个实体类，用户实体类和角色实体类<ul>
+<li>让用户和角色的实体类能体现出来多对多的关系</li>
+<li>各自包含对方的一个集合引用</li>
+</ul>
+</li>
+<li>建立两个配置文件<ul>
+<li>用户配置文件和角色配置文件</li>
+</ul>
+</li>
+<li>实现配置：<ul>
+<li>当我们查询用户时，可以同时得到用户所包含的角色信息</li>
+<li>当我们查询角色时，可以同时得到角色所包赋予的用户信息</li>
+</ul>
+</li>
+</ol>
+<p>新建好实体类：User类和Role类，在并定义好与数据库中字段相对应的属性。并生成set/get方法与tostring方法。<br></p>
+<ul>
+<li>多对多<h4 id="查询角色的时候同时获取用户的信息"><a href="#查询角色的时候同时获取用户的信息" class="headerlink" title="查询角色的时候同时获取用户的信息"></a>查询角色的时候同时获取用户的信息</h4></li>
+</ul>
+<p>在角色实体类中添加一个多对多的关系映射：一个角色可以赋予多个用户的存储用户类型的集合，并生成对应的get/set方法。</p>
+<img src="https://s2.ax1x.com/2020/01/01/lGNNa8.png" alt="lGNNa8.png" border="0" />
+
+<p>然后在dao接口对应的xml配置文件中，配置对应的resultMap和select标签，基本与上面相同。</p>
+<img src="https://s2.ax1x.com/2020/01/01/lGNhRJ.png" alt="lGNhRJ.png" border="0" />
+
+<p><strong>需要注意的是：</strong> 在select标签中的两次外连接查询语句，可以换行，但是要在每一行前面加一个空格，防止解析的时候少了空格造成错误。</p>
+<h4 id="查询用户同时获得对应的角色"><a href="#查询用户同时获得对应的角色" class="headerlink" title="查询用户同时获得对应的角色"></a>查询用户同时获得对应的角色</h4><p>操作与上基本相同，只不过，上面查询角色获取对应的用户是将角色表作为主表查询，而查询用户同时获得对应的角色是将用户表作为主表。</p>
+<hr style="height:10px;border:none;border-top:10px groove skyblue;" />
+
+<h3 id="JNDI使用"><a href="#JNDI使用" class="headerlink" title="JNDI使用"></a>JNDI使用</h3><p>JNDI全称：<br></p>
+<p>Java Naming and Directory Interface。Java命名和接口目录，是由SUN公司推出的一套规范，数与JavaEE技术之一。<br></p>
+<p><strong>目的：</strong> 模仿windows系统的注册表（一种map结构）。</p>
+<img src="https://s2.ax1x.com/2020/01/01/lG6GEd.png" alt="lG6GEd.png" border="0" />
+
+<p>因为JNDI需要tomcat服务器，所以一般的java工程并不能满足。我们需要新建一个wep的maven工程。<br><br>即：使用webapp的模板创建一个web工程：</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/01/lG4P0K.png" alt="lG4P0K.png" border="0" />
+</center>
+
+<p>并按照之前的maven工程结构，将java、resource、test文件夹补全。<br><br>在webapp文件夹下新建一个META-INF文件夹，里面新建一个context.xml文件。<br></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">&lt;Resource </span></span><br><span class="line"><span class="comment">name="jdbc/eesy_mybatis"						数据源的名称</span></span><br><span class="line"><span class="comment">type="javax.sql.DataSource"						数据源类型</span></span><br><span class="line"><span class="comment">auth="Container"								数据源提供者</span></span><br><span class="line"><span class="comment">maxActive="20"									最大活动数</span></span><br><span class="line"><span class="comment">maxWait="10000"									最大等待时间（秒）</span></span><br><span class="line"><span class="comment">maxIdle="5"										最大空闲数</span></span><br><span class="line"><span class="comment">username="root"									用户名</span></span><br><span class="line"><span class="comment">password="1234"									密码</span></span><br><span class="line"><span class="comment">driverClassName="com.mysql.jdbc.Driver"			驱动类</span></span><br><span class="line"><span class="comment">url="jdbc:mysql://localhost:3306/eesy_mybatis"	连接url字符串</span></span><br><span class="line"><span class="comment">/&gt;</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Resource</span> </span></span><br><span class="line"><span class="tag"><span class="attr">name</span>=<span class="string">"jdbc/eesy_mybatis"</span></span></span><br><span class="line"><span class="tag"><span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span></span></span><br><span class="line"><span class="tag"><span class="attr">auth</span>=<span class="string">"Container"</span></span></span><br><span class="line"><span class="tag"><span class="attr">maxActive</span>=<span class="string">"20"</span></span></span><br><span class="line"><span class="tag"><span class="attr">maxWait</span>=<span class="string">"10000"</span></span></span><br><span class="line"><span class="tag"><span class="attr">maxIdle</span>=<span class="string">"5"</span></span></span><br><span class="line"><span class="tag"><span class="attr">username</span>=<span class="string">"root"</span></span></span><br><span class="line"><span class="tag"><span class="attr">password</span>=<span class="string">"123456"</span></span></span><br><span class="line"><span class="tag"><span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag"><span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/test"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+可以将之前写的java文件夹和test文件夹copy过来，用于测试成果。
+在pom.xml文件中copy之前的依赖文件，并将servlet-api和jsp-api的依赖加进去。
+<br>
+将SqlMapConfig.xml文件中的dataSource标签的type属性改成JNDI，并且在里面配置dirctory+name（key）
+<br>
+
+<img src="https://s2.ax1x.com/2020/01/01/lG5Wxs.png" alt="lG5Wxs.png" border="0" />
+
+<p>java:comp/env/为dirctory路径，不能修改。<br><br>如果我们不通过tomcat服务器，直接启动test里面的测试类时，报错。<br><br>因为：测试类没经过tomcat服务器，所以没有tomcat为测试类准备map，拿不到tomcat中的数据源。<br><br>所以我们需要在jsp文件中，经过tomcat，来获取数据源。</p>
 
       
 
@@ -258,6 +355,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">多表查询</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JNDI补充</a>
         		</li>
       		
 		</ul>
@@ -338,6 +439,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/01/02/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E5%85%AD%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MyBatis深入浅出（六）
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/12/12/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E5%9B%9B%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">MyBatis深入浅出（四）</div>
@@ -367,7 +477,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一"><span class="toc-number">1.</span> <span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对一"><span class="toc-number">2.</span> <span class="toc-text">多对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对多"><span class="toc-number">3.</span> <span class="toc-text">一对多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对多"><span class="toc-number">4.</span> <span class="toc-text">多对多</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一"><span class="toc-number">1.</span> <span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对一"><span class="toc-number">2.</span> <span class="toc-text">多对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对多"><span class="toc-number">3.</span> <span class="toc-text">一对多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对多"><span class="toc-number">4.</span> <span class="toc-text">多对多</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询角色的时候同时获取用户的信息"><span class="toc-number">4.1.</span> <span class="toc-text">查询角色的时候同时获取用户的信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询用户同时获得对应的角色"><span class="toc-number">4.2.</span> <span class="toc-text">查询用户同时获得对应的角色</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JNDI使用"><span class="toc-number">5.</span> <span class="toc-text">JNDI使用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -404,7 +514,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 李燕超
+    		&copy; 2020 李燕超
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -511,7 +621,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,31 +637,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">入门案例</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">介绍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">各种标签</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">IDE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">MyBatis中的各种标签</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">多表查询</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">连接池</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">注解开发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,6 +697,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">延迟加载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">缓存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">多表查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">JNDI补充</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">连接池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">与Struct2异同</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">科普</a>
               </li>
              
@@ -604,10 +746,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">递归</a>
               </li>
             
             <div class="clearfix"></div>
