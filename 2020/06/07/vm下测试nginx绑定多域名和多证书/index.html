@@ -6,26 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MyBatis深入浅出（一） | 博客</title>
+  <title>vm下测试nginx绑定多域名和多证书 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SSM框架简单介绍SSM的全程：Spring+SpringMVC+MyBatis。">
-<meta name="keywords" content="MyBatis,介绍">
+  <meta name="keywords" content="-Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis深入浅出（一）">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
+<meta property="og:title" content="vm下测试nginx绑定多域名和多证书">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;07&#x2F;vm%E4%B8%8B%E6%B5%8B%E8%AF%95nginx%E7%BB%91%E5%AE%9A%E5%A4%9A%E5%9F%9F%E5%90%8D%E5%92%8C%E5%A4%9A%E8%AF%81%E4%B9%A6&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="SSM框架简单介绍SSM的全程：Spring+SpringMVC+MyBatis。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Qahi1x.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QahWCR.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Qa7yb6.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QdS1BQ.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;QdHxPS.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QahX8I.png">
-<meta property="og:updated_time" content="2020-01-12T15:58:42.991Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;07&#x2F;t2P18s.md.jpg">
+<meta property="og:updated_time" content="2020-06-07T05:27:20.068Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;QaRHEj.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;07&#x2F;t2P18s.md.jpg">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
   
@@ -171,7 +163,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MyBatis深入浅出（一）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vm下测试nginx绑定多域名和多证书" class="article article-type-post " itemscope itemprop="blogPost">
 
   
   <div class="article-inner">
@@ -180,13 +172,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MyBatis深入浅出（一）
+      vm下测试nginx绑定多域名和多证书
     </h1>
   
 
         
-        <a href="/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-08T10:58:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
+        <a href="/2020/06/07/vm%E4%B8%8B%E6%B5%8B%E8%AF%95nginx%E7%BB%91%E5%AE%9A%E5%A4%9A%E5%9F%9F%E5%90%8D%E5%92%8C%E5%A4%9A%E8%AF%81%E4%B9%A6/" class="archive-article-date">
+  	<time datetime="2020-06-07T05:21:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-07</time>
 </a>
 
 
@@ -203,98 +195,48 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://s2.ax1x.com/2019/12/08/QaRHEj.jpg" alt="Mybatis"></p>
-<h2 id="SSM框架简单介绍"><a href="#SSM框架简单介绍" class="headerlink" title="SSM框架简单介绍"></a>SSM框架简单介绍</h2><p>SSM的全程：Spring+SpringMVC+MyBatis。</p>
+        <p><img src="https://s1.ax1x.com/2020/06/07/t2P18s.md.jpg" alt="图片"></p>
 <a id="more"></a>
-<p style="text-indent:2em">
-是由Spring、MyBatis两个开源框架整合而成（SpringMVC是Spring中的部分内容）。常作为数据源较简单的web项目的框架。
-</p>
 
-<p><img src="https://s2.ax1x.com/2019/12/08/Qahi1x.png" alt="SSM"></p>
-<h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p style="text-indent:3em">MyBatis 是一款优秀的持久层框架，是用Java编写的。</p>
 
-<h3 id="持久层总图"><a href="#持久层总图" class="headerlink" title="持久层总图"></a>持久层总图</h3><p><img src="https://s2.ax1x.com/2019/12/08/QahWCR.jpg" alt="持久层总图"></p>
-<p style="text-indent:3em">
-它封装了JDBC操作的很多细节，使开发者只需要关注sql语句本身，而无需关注注册驱动，创建链接等复杂过程，并且
-它使用了ORM思想实现了结果集的封装
-</p>
 
-<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p style="text-indent:5em">
-Object Relational Mapping  对象关系映射
-</p>
-<p style="text-indent:3em">
-简单地说：就是把数据库表和实体类及实体类的属性对应起来，让我们可以操作实体类就可以实现操作数据库表。
-</p>
+<h3 id="安装Openssl"><a href="#安装Openssl" class="headerlink" title="安装Openssl"></a>安装Openssl</h3><p>sudo apt-get install openssl</p>
+<p>sudo apt-get install libssl-dev</p>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>apt-get install -y nginx</p>
+<h4 id="修改nginx-conf文件"><a href="#修改nginx-conf文件" class="headerlink" title="修改nginx.conf文件"></a>修改nginx.conf文件</h4><p>打开/etc/nginx/nginx.conf</p>
+<p>在http{}块里面添加</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">   <span class="attr">server</span> <span class="string">&#123;</span></span><br><span class="line"><span class="comment">   		# 监听的端口</span></span><br><span class="line">		<span class="attr">listen</span>       <span class="string">443 ssl;</span></span><br><span class="line"><span class="comment">		# 域名</span></span><br><span class="line">		<span class="attr">server_name</span>  <span class="string">www.test1.com;</span></span><br><span class="line">		<span class="meta">//</span> <span class="string">如果使用http访问 重定向到https</span></span><br><span class="line">		<span class="attr">if</span> <span class="string">($scheme = http) &#123;</span></span><br><span class="line">			<span class="attr">return</span> <span class="string">301 https://www.test1.com$request_uri;</span></span><br><span class="line">		<span class="attr">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">		# 证书存放的文件夹</span></span><br><span class="line">		<span class="attr">ssl_certificate</span>      <span class="string">/cloud/keys/full_chain.pem;</span></span><br><span class="line"><span class="comment">		# 证书密钥存放的文件夹</span></span><br><span class="line">		<span class="attr">ssl_certificate_key</span>  <span class="string">/cloud/keys/pri_vate.key;</span></span><br><span class="line">	 </span><br><span class="line">		<span class="attr">ssl_session_timeout</span> <span class="string">5m;</span></span><br><span class="line">		<span class="attr">ssl_ciphers</span> <span class="string">ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span></span><br><span class="line">		<span class="attr">ssl_protocols</span> <span class="string">TLSv1 TLSv1.1 TLSv1.2;</span></span><br><span class="line">		<span class="attr">ssl_prefer_server_ciphers</span> <span class="string">on;</span></span><br><span class="line">	 </span><br><span class="line">      </span><br><span class="line">		</span><br><span class="line">		<span class="attr">location</span> <span class="string">/ &#123;</span></span><br><span class="line"><span class="comment">			# 本地文件存放的文件夹 根目录</span></span><br><span class="line">        	<span class="attr">root</span>	<span class="string">/soft/nginx_;</span></span><br><span class="line"><span class="comment">        	# 默认访问的文件夹下的页面 默认页</span></span><br><span class="line">			<span class="attr">index</span>	<span class="string">index02.html	index02.htm;    </span></span><br><span class="line"><span class="comment">			#proxy_pass  http://xxxx;  #请求转向xxxx 定义的服务器列表</span></span><br><span class="line"><span class="comment">            #deny 127.0.0.1;  #拒绝的ip</span></span><br><span class="line"><span class="comment">            #allow 172.18.5.54; #允许的ip  </span></span><br><span class="line">		<span class="attr">&#125;</span></span><br><span class="line">	    <span class="attr">&#125;</span></span><br><span class="line">	 </span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    <span class="attr">server</span> <span class="string">&#123;</span></span><br><span class="line">		<span class="attr">listen</span>       <span class="string">443 ssl;</span></span><br><span class="line">		<span class="attr">server_name</span>  <span class="string">app.test2.com;</span></span><br><span class="line"><span class="comment">#		rewrite ^(.*)  https://app.test2.com$1 permanent;	</span></span><br><span class="line"></span><br><span class="line">		<span class="attr">if</span> <span class="string">($scheme = http) &#123;</span></span><br><span class="line">			<span class="attr">return</span> <span class="string">301 https://app.test2.com$request_uri;</span></span><br><span class="line">		<span class="attr">&#125;</span></span><br><span class="line">		<span class="attr">ssl_certificate</span> <span class="string">/cloud/keys/fullchain.pem;</span></span><br><span class="line">    		<span class="attr">ssl_certificate_key</span> <span class="string">/cloud/keys/privkey.pem;</span></span><br><span class="line">	 </span><br><span class="line">		<span class="attr">ssl_session_timeout</span> <span class="string">5m;</span></span><br><span class="line">		<span class="attr">ssl_ciphers</span> <span class="string">ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span></span><br><span class="line">		<span class="attr">ssl_protocols</span> <span class="string">TLSv1 TLSv1.1 TLSv1.2;</span></span><br><span class="line">		<span class="attr">ssl_prefer_server_ciphers</span> <span class="string">on;</span></span><br><span class="line">	 </span><br><span class="line">	 </span><br><span class="line">		<span class="attr">location</span> <span class="string">/ &#123;</span></span><br><span class="line">		   <span class="attr">root</span>		<span class="string">/soft/nginx_;</span></span><br><span class="line">		   <span class="attr">index</span>	<span class="string">index.html index.htm;</span></span><br><span class="line">		<span class="attr">&#125;</span></span><br><span class="line"> <span class="attr">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th align="center">Model</th>
-<th align="center">Mysql</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">user</td>
-<td align="center">User</td>
-</tr>
-<tr>
-<td align="center">id</td>
-<td align="center">UserId</td>
-</tr>
-<tr>
-<td align="center">user_name</td>
-<td align="center">UserName</td>
-</tr>
-</tbody></table>
-<h2 id="MaBatis的环境搭建"><a href="#MaBatis的环境搭建" class="headerlink" title="MaBatis的环境搭建"></a>MaBatis的环境搭建</h2><ol>
-<li><p>创建Maven工程，并导入坐标</p>
-</li>
-<li><p>创建实体类和dao层的接口</p>
-</li>
-<li><p>创建MyBatis的主配置文件</p>
-<p style="text-indent:8em">
-SqlMapConfig.xml
-</p>
-</li>
-<li><p>创建映射配置文件</p>
-<p style="text-indent:8em">
-UserDao.xml
-</p>
 
-</li>
-</ol>
-<h2 id="环境搭建的注意事项"><a href="#环境搭建的注意事项" class="headerlink" title="环境搭建的注意事项"></a>环境搭建的注意事项</h2><ol>
-<li>再Mybatis中，把持久层的操作接口名称和映射文件也叫做Mapper，所以UserDao和UserMapper时一样的</li>
-<li>再IDEA中创建目录时，包和目录时不一样的<ul>
-<li>包在创建时，com.lyc.dao是三级结构</li>
-<li>目录在创建时 com.lyc.dao是一级目录</li>
-</ul>
-</li>
-<li>Mybatis的映射配置文件位置必须和dao接口的包结构相同，即：<br><img src="https://s2.ax1x.com/2019/12/08/Qa7yb6.png" alt=""></li>
-<li>映射配置文件（SqlMapConfig.xml）的mapper标签的namespace属性的取值必须是dao接口的全限定类名：com/lyc/dao/UserDao.xml</li>
-<li>映射配置文件的操作配置（select）,id属性的取值必须是dao接口的方法名</li>
-</ol>
-<p>当我们遵守了3、4、5之后，我们在开发中就可以不用写dao接口的的实现类了。</p>
-<h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><ol>
-<li>读取配置文件</li>
-<li>创建SqlSessionFactory工厂</li>
-<li>创建SqlSession</li>
-<li>创建Dao接口的代理对象</li>
-<li>执行dao中的方法</li>
-<li>释放资源</li>
-</ol>
-<p><font color="greeblue">注意事项：</font><br>不要忘记在映射配置中告知Mybatis要封装到那个实体类中。</p>
-<ul>
-<li>配置方式：指定实体类的全限定类名<h3 id="入门案例分析"><a href="#入门案例分析" class="headerlink" title="入门案例分析"></a>入门案例分析</h3><img src="https://s2.ax1x.com/2019/12/08/QdS1BQ.png" alt=""><h2 id="MyBatis-基于注解的入门案例"><a href="#MyBatis-基于注解的入门案例" class="headerlink" title="MyBatis 基于注解的入门案例"></a>MyBatis 基于注解的入门案例</h2></li>
-</ul>
-<ol>
-<li>把UserDao.xml文件移除，在dao接口的方法上使用@Select注解，并指定Sql语句</li>
-<li>同时需要在SqlMapConfig.xml中的mapper配置时，使用class属性指定dao接口的全限定类名</li>
-</ol>
-<p><font color="greebl">踩坑：</font><br> class属性的中的全限定类名中的包名用.隔开，如果用/则会报错，找不到指定路径的java类<br> 而基于XML的映射配置文件，mapper标签中的namespace属性中的全限定类名需要用/隔开</p>
-<p><font color="greeblue">明确：</font><br>在实际开发中，越简便越好，不管使用XML还是注解配置，一般都不写dao接口的实现类。<br>但是Mybatis是支持写dao实现类的。</p>
-<h3 id="查询所有findAll-方法的分析"><a href="#查询所有findAll-方法的分析" class="headerlink" title="查询所有findAll()方法的分析"></a>查询所有findAll()方法的分析</h3><p><img src="https://s2.ax1x.com/2019/12/09/QdHxPS.png" alt="自定义mapper分析"></p>
-<p>各个步骤对应关系<br><img src="https://s2.ax1x.com/2019/12/08/QahX8I.png" alt="mybatis分析"></p>
+
+
+
+
+
+
+
+<p>修改完配置文件后 通过nginx -t检测一下是否有语法错误 </p>
+<p>然后nginx 启动</p>
+<h3 id="cp-nginx-conf到指定目录-修改测试"><a href="#cp-nginx-conf到指定目录-修改测试" class="headerlink" title="cp nginx.conf到指定目录 修改测试"></a>cp nginx.conf到指定目录 修改测试</h3><p>可能会出现操作失误导致配置文件出现问题，可以先把配置文件cp到指定的文件夹</p>
+<p>通过nginx -t -c /指定路径        测试配置文件是否有语法错误</p>
+<p>nginx -c /指定路径                启动nginx</p>
+<h3 id="测试页面和证书文件"><a href="#测试页面和证书文件" class="headerlink" title="测试页面和证书文件"></a>测试页面和证书文件</h3><p>在server{}块 root 目录下的文件夹下创建 index.html 和 index2.html</p>
+<p>在/cloud/keys/目录下 添加 nginx.conf中配置的证书文件</p>
+<h3 id="修改windows下的hosts文件"><a href="#修改windows下的hosts文件" class="headerlink" title="修改windows下的hosts文件"></a>修改windows下的hosts文件</h3><p>先在ubuntu上运行</p>
+<p>ifconfig</p>
+<p>在inet后的便是你的ip地址，在windows上ping一下ip地址 看看能否ping通</p>
+<p>由于是测试绑定域名，只能依靠修改windows下的hosts文件进行解析域名</p>
+<p>修改C:\Windows\System32\drivers\etc下的hosts文件 ，加入一行</p>
+<p>虚拟机的ip地址  测试域名地址1    测试域名地址2</p>
+<p>例如：</p>
+<p>192.168.83.130    <a href="http://www.test1.com" target="_blank" rel="noopener">www.test1.com</a>    app.test2.com</p>
+<p>最后在游览器上输入你的测试地址 <a href="https://www.test1.com" target="_blank" rel="noopener">https://www.test1.com</a> 和 <a href="https://app.test2.com" target="_blank" rel="noopener">https://app.test2.com</a></p>
+<p>查看是否加载到了本地文件夹下的页面</p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><h3 id="nginx-t测试文本-server”-directive-is-not-allowed-here-in-etc-nginx-sites-enabled-default-21"><a href="#nginx-t测试文本-server”-directive-is-not-allowed-here-in-etc-nginx-sites-enabled-default-21" class="headerlink" title="nginx -t测试文本 server” directive is not allowed here in /etc/nginx/sites-enabled/default:21"></a>nginx -t测试文本 server” directive is not allowed here in /etc/nginx/sites-enabled/default:21</h3><p>应该是你的server{}块没放在http{}块里面 或者是多了个 }</p>
+<h3 id="nginx-t测试文本报错-2456-2456-open-“-run-nginx-pid”-failed-13-Permission-denied"><a href="#nginx-t测试文本报错-2456-2456-open-“-run-nginx-pid”-failed-13-Permission-denied" class="headerlink" title="nginx -t测试文本报错 2456#2456: open() “/run/nginx.pid” failed (13: Permission denied)"></a>nginx -t测试文本报错 2456#2456: open() “/run/nginx.pid” failed (13: Permission denied)</h3><p>尝试使用</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo nginx -t</span></span><br></pre></td></tr></table></figure>
+
+<p>测试</p>
 
       
 
@@ -312,28 +254,13 @@ UserDao.xml
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">MyBatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">介绍</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">-Nginx</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SSM//" class="article-tag-list-link color4">SSM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -383,7 +310,7 @@ UserDao.xml
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/07/vm%E4%B8%8B%E6%B5%8B%E8%AF%95nginx%E7%BB%91%E5%AE%9A%E5%A4%9A%E5%9F%9F%E5%90%8D%E5%92%8C%E5%A4%9A%E8%AF%81%E4%B9%A6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -397,18 +324,9 @@ UserDao.xml
   
 <nav id="article-nav">
   
-    <a href="/2019/12/08/MyBatis%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MyBatis深入浅出（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/07/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Junit单元测试、反射、注解</div>
+    <a href="/2020/02/07/SpringMVC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringMVC</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -435,7 +353,7 @@ UserDao.xml
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSM框架简单介绍"><span class="toc-number">1.</span> <span class="toc-text">SSM框架简单介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyBatis"><span class="toc-number"></span> <span class="toc-text">MyBatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#持久层总图"><span class="toc-number">0.1.</span> <span class="toc-text">持久层总图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MaBatis的环境搭建"><span class="toc-number">2.</span> <span class="toc-text">MaBatis的环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建的注意事项"><span class="toc-number">3.</span> <span class="toc-text">环境搭建的注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门案例"><span class="toc-number">4.</span> <span class="toc-text">入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入门案例分析"><span class="toc-number">4.1.</span> <span class="toc-text">入门案例分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis-基于注解的入门案例"><span class="toc-number">5.</span> <span class="toc-text">MyBatis 基于注解的入门案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询所有findAll-方法的分析"><span class="toc-number">5.1.</span> <span class="toc-text">查询所有findAll()方法的分析</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Openssl"><span class="toc-number">1.</span> <span class="toc-text">安装Openssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Nginx"><span class="toc-number">2.</span> <span class="toc-text">安装Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改nginx-conf文件"><span class="toc-number">2.1.</span> <span class="toc-text">修改nginx.conf文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp-nginx-conf到指定目录-修改测试"><span class="toc-number">3.</span> <span class="toc-text">cp nginx.conf到指定目录 修改测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试页面和证书文件"><span class="toc-number">4.</span> <span class="toc-text">测试页面和证书文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改windows下的hosts文件"><span class="toc-number">5.</span> <span class="toc-text">修改windows下的hosts文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误"><span class="toc-number"></span> <span class="toc-text">错误</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-t测试文本-server”-directive-is-not-allowed-here-in-etc-nginx-sites-enabled-default-21"><span class="toc-number">1.</span> <span class="toc-text">nginx -t测试文本 server” directive is not allowed here in /etc/nginx/sites-enabled/default:21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-t测试文本报错-2456-2456-open-“-run-nginx-pid”-failed-13-Permission-denied"><span class="toc-number">2.</span> <span class="toc-text">nginx -t测试文本报错 2456#2456: open() “/run/nginx.pid” failed (13: Permission denied)</span></a></li></ol>
                     </div>
                 </span>
             </div>
